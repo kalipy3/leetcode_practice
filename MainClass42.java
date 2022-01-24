@@ -1,8 +1,30 @@
+//请看官方题解，三种方法都很好懂
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Stack;
+//方法一
+//class Solution {
+//    public int trap(int[] height) {
+//        int ans = 0;
+//        int left = 0, right = height.length - 1;
+//        int leftMax = 0, rightMax = 0;
+//        while (left < right) {
+//            leftMax = Math.max(leftMax, height[left]);
+//            rightMax = Math.max(rightMax, height[right]);
+//            if (height[left] < height[right]) {
+//                ans += leftMax - height[left];
+//                ++left;
+//            } else {
+//                ans += rightMax - height[right];
+//                --right;
+//            }
+//        }
+//        return ans;
+//    }
+//}
 
+//方法二
 class Solution {
     public int trap(int[] height) {
         int sum = 0;

@@ -1,11 +1,86 @@
+作者：reedfan
+链接：https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-fa-he-dong-tai-gui-hua-by-reedfa/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+//方法超
+public String longestPalindrome(String s) {
+
+    if (s == null || s.length() == 0) {
+        return "";
+    }
+    int strLen = s.length();
+    int left = 0;
+    int right = 0;
+    int len = 1;
+    int maxStart = 0;
+    int maxLen = 0;
+
+    for (int i = 0; i < strLen; i++) {
+        left = i - 1;
+        right = i + 1;
+        while (left >= 0 && s.charAt(left) == s.charAt(i)) {
+            len++;
+            left--;
+        }
+        while (right < strLen && s.charAt(right) == s.charAt(i)) {
+            len++;
+            right++;
+        }
+        while (left >= 0 && right < strLen && s.charAt(right) == s.charAt(left)) {
+            len = len + 2;
+            left--;
+            right++;
+        }
+        if (len > maxLen) {
+            maxLen = len;
+            maxStart = left;
+        }
+        len = 1;
+    }
+    return s.substring(maxStart + 1, maxStart + maxLen + 1);
+
+}
+
+
+
+作者：carlsun-2
+链接：https://leetcode-cn.com/problems/longest-palindromic-substring/solution/dai-ma-sui-xiang-lu-5-zui-chang-hui-wen-zi0c6/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+//代码随想录
+//kalipy补充:从下到上，从左到右遍历，且只遍历右上角(因为dp[i][j]的定义决定i<=j)
+class Solution {
+    public:
+        string longestPalindrome(string s) {
+            vector<vector<int>> dp(s.size(), vector<int>(s.size(), 0));
+            int maxlenth = 0;
+            int left = 0;
+            int right = 0;
+            for (int i = s.size() - 1; i >= 0; i--) {
+                for (int j = i; j < s.size(); j++) {
+                    if (s[i] == s[j] && (j - i <= 1 || dp[i + 1][j - 1])) {
+                        dp[i][j] = true;
+                    }
+                    if (dp[i][j] && j - i + 1 > maxlenth) {
+                        maxlenth = j - i + 1;
+                        left = i;
+                        right = j;
+                    }
+                }
+            }
+            return s.substr(left, maxlenth);
+        }
+};
+
+
+
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-//作者：yi-fang-65
-//链接：https://leetcode-cn.com/problems/longest-palindromic-substring/solution/java-dong-tai-gui-hua-chao-jian-ji-de-da-l9pa/
-//来源：力扣（LeetCode）
-//著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+//从下到上，从左到右遍历，且只遍历右上角(因为dp[i][j]的定义决定i<=j)
 class Solution {
     public String longestPalindrome(String s) {
         int N = s.length();
@@ -14,6 +89,7 @@ class Solution {
 
         for (int i = N - 1; i >= 0; i--) {
             for (int j = i; j < N; j++) {
+                System.out.println("i,j:"+i+"," +j);
                 if (s.charAt(i) == s.charAt(j) && (j - i <= 1 || dp[i + 1][j - 1])) {
                     dp[i][j] = true;
                 }
@@ -21,6 +97,7 @@ class Solution {
                     res = s.substring(i, j + 1);
                 }
             }
+            System.out.println("gg");
         }
         return res;
     }
@@ -30,12 +107,12 @@ class Solution {
 
 public class MainClass5 {
     public static void main(String[] args) throws IOException {
-            String s = "abcbd";
+        String s = "cbbd";
 
-            String ret = new Solution().longestPalindrome(s);
+        String ret = new Solution().longestPalindrome(s);
 
-            String out = (ret);
+        String out = (ret);
 
-            System.out.print(out);
+        System.out.print(out);
     }
 }

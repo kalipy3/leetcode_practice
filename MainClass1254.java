@@ -1,3 +1,5 @@
+//推荐写法二
+
 //作者：CelesteZephyr
 //链接：https://leetcode-cn.com/problems/number-of-closed-islands/solution/1254-tong-ji-feng-bi-dao-yu-de-shu-mu-sh-e1e9/
 //来源：力扣（LeetCode）
@@ -38,13 +40,36 @@ class Solution {
     }
 }
 
+//写法二
+class Solution {
+    int m;
+    int n;
+    int[][] grid;
+    int count = 0;
+    public int closedIsland(int[][] grid) {
+        this.m = grid.length;
+        this.n = grid[0].length;
+        this.grid = grid;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j] == 0) {
+                    if(DFS(i,j)) count++;
+                }
+            }
+        }
+        return count;
+    }
 
-public class MainClass1254
-{
-    public static void main(String args[]) {
-        int grid [][] = {{0,0,1,0,0},{0,1,0,1,0},{0,1,1,1,0}};
-        int res = new Solution().closedIsland(grid);
-        System.out.println(res);
+    private boolean DFS(int i,int j){
+        if(i<0 || j<0 || i>=m || j>=n) return false;
+        if(grid[i][j]==0){
+            grid[i][j] = 1;
+            boolean up = DFS(i-1,j);
+            boolean down = DFS(i+1,j);
+            boolean left = DFS(i,j-1);
+            boolean right = DFS(i,j+1);
+            return (up && down && left && right);
+        }
+        return true;    
     }
 }
-

@@ -24,3 +24,98 @@ remove() 和 poll() 方法都是从队列中删除第一个元素。remove() 的
 
 peek，element区别：
 element() 和 peek() 用于在队列的头部查询元素。与 remove() 方法类似，在队列为空时， element() 抛出一个异常，而 peek() 返回 null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+二维数组:
+
+public class TestArray2 {
+    public static void main(String[] args) {
+        //二维数组不是规则的矩阵
+        int [] intA[] ={{1,2},{2,3,4},{3,4,5,6}};
+        System.out.println(intA);//[[I@5e265ba4 两个[[表示是二维的 I表示数组是int型 @5e265ba4是内存地址
+
+        //声明一一个二维数组，用于存储3个一维数组，每一个一维数组存多少个数据，不知道 ，null
+        int [][]intB=new int[3][];
+        intB[0]=new int[3];
+        intB[1]=new int[]{1,2,3,4}; 
+        intB[2]=new int[2];
+        System.out.println(intB[1]);//[I@156643d4
+
+        //存储三个一维数组，每个一维数组的长度为4
+        int[][] intC =new int[3][4];
+        System.out.println(intC);
+
+    }
+}
+
+
+//二分查找区间怎么定?(nb!!!)
+//https://www.bilibili.com/video/BV147411i7zu
+
+//二分查找细节:
+https://leetcode-cn.com/problems/binary-search/solution/er-fen-cha-zhao-xiang-jie-by-labuladong/
+//二分经典边界题:
+https://leetcode-cn.com/problems/zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-lcof/solution/mian-shi-ti-53-i-zai-pai-xu-shu-zu-zhong-cha-zha-5/
+//剑指offer40题
+
+
+
+Deque表示双端队列。双端队列是在两端都可以进行插入和删除的队列:
+常用方法：
+    新建一个双端队列：Deque<Character> deque = new LinkedList<Character>();
+    判断是否为空： deque.isEmpty()
+    增：deque.offerFirst()， deque.offerLast();//从头添加和尾部添加
+    删：deque.pollFirst()， deque.pollLast()//从头添加和尾部出队
+    查：deque.peekFirst(), deque.peekLast()//查看头添加和尾部元素
+
+
+
+回溯算法神仙题解:
+https://leetcode-cn.com/problems/n-queens/solution/nhuang-hou-jing-dian-hui-su-suan-fa-tu-wen-xiang-j/
+和842题
+
+
+
+map遍历方法:
+//// 1. entrySet遍历，在键和值都需要时使用（最常用）
+//for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+//    System.out.println("key = " + entry.getKey() + ", value = " + entry.getValue());
+//}
+//// 2. 通过keySet或values来实现遍历,性能略低于第一种方式
+//// 遍历map中的键
+//for (Integer key : map.keySet()) {
+//    System.out.println("key = " + key);
+//}
+//// 遍历map中的值
+//for (Integer value : map.values()) {
+//    System.out.println("key = " + value);
+//}
+//// 4. java8 Lambda
+//// java8提供了Lambda表达式支持，语法看起来更简洁，可以同时拿到key和value，
+//// 不过，经测试，性能低于entrySet,所以更推荐用entrySet的方式
+//map.forEach((key, value) -> {
+//    System.out.println(key + ":" + value);
+//});
+
+
+构造二叉树:
+https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-postorder-traversal/solution/kan-wo-jiu-gou-liao-san-chong-bian-li-fang-shi-gou/
+
+
+将数组分割为 mmm 段，求……」是动态规划题目常见的问法。
+「使……最大值尽可能小」是二分搜索题目常见的问法。
+通常，涉及连续子数组问题的时候，我们使用前缀和来解决。

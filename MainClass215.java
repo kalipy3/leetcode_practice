@@ -41,24 +41,43 @@ class Solution {
         return partition(nums, l, r);
     }
 
+    //public int partition(int[] nums, int l, int r) {
+    //    // 3. 在调用当前方法的randomPartition方法中，已经确定了了随机数是nums[r]
+    //    int x = nums[r], i = l - 1;
+
+    //    // 首先比较区间在[l， r]之间， 所以nums[j]中的    l<= j <= r
+    //    for (int j = l; j < r; ++j) {
+    //        // 4. nums[j] 跟随机数 x 比较, 小于x的数都跟[l,r]左边区间交换，i=l-1,所以++i=l,初始索引就是l,
+    //        if (nums[j] <= x) {
+    //            swap(nums, ++i, j);//两两交换
+    //        }
+    //    }// 这个for循环操作就是将小于 x 的数都往[i, j]的左边区间设置，从而实现存在[l, i]区间,使得对应数值都 小于 x
+
+    //    //5. 既然已经将<x的值都放在一边了，现在将x也就是nums[r] 跟nums[i+1]交换，从而分成两个区间[l.i+1]左, [i+2, r]右，左边区间的值都小于x
+    //    swap(nums, i + 1, r);
+
+    //    // 然后返回这个分区值
+    //    return i + 1;
+    //}
+
+    //kalipy
     public int partition(int[] nums, int l, int r) {
-        // 3. 在调用当前方法的randomPartition方法中，已经确定了了随机数是nums[r]
-        int x = nums[r], i = l - 1;
+        int x = nums[r];
+        int j = l;
 
-        // 首先比较区间在[l， r]之间， 所以nums[j]中的    l<= j <= r
-        for (int j = l; j < r; ++j) {
-            // 4. nums[j] 跟随机数 x 比较, 小于x的数都跟[l,r]左边区间交换，i=l-1,所以++i=l,初始索引就是l,
-            if (nums[j] <= x) {
-                swap(nums, ++i, j);//两两交换
+        //x = 3
+        //1, 5, 2, 4, 1
+        for (int i = l; i < r; i++) {
+            if (nums[i] <= x) {
+                swap(nums, i, j);
+                j++;
             }
-        }// 这个for循环操作就是将小于 x 的数都往[i, j]的左边区间设置，从而实现存在[l, i]区间,使得对应数值都 小于 x
+        }
 
-        //5. 既然已经将<x的值都放在一边了，现在将x也就是nums[r] 跟nums[i+1]交换，从而分成两个区间[l.i+1]左, [i+2, r]右，左边区间的值都小于x
-        swap(nums, i + 1, r);
-
-        // 然后返回这个分区值
-        return i + 1;
+        swap(nums, j, r);
+        return j;
     }
+
 
     public void swap(int[] a, int i, int j) {
         int temp = a[i];

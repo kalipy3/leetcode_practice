@@ -1,3 +1,5 @@
+//请看指剑offer第10题，有个大坑!!
+//
 //https://leetcode-cn.com/problems/qing-wa-tiao-tai-jie-wen-ti-lcof/
 class Solution {
     public int numWays(int n) {

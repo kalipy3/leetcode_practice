@@ -19,10 +19,10 @@ class DoubleList{//双链表head<->[key,val]<->tail
         tail.pre = head;
     }
     void addFirst(Node n){//头插
-        head.next.pre = n;
-        n.next = head.next;
-        n.pre = head;
-        head.next = n;
+        head.next.pre = n;//<--
+        n.next = head.next;//-->
+        n.pre = head;//<--
+        head.next = n;//-->
     }
     void remove(Node n){//删除指定节点n
         n.pre.next = n.next;

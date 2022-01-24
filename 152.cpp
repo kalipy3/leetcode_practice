@@ -1,73 +1,43 @@
-
-#include <sstream>
-#include <algorithm>
-#include <vector>
-#include <iostream>
-#include <string>
-#include <ctype.h>
-using namespace std;
-
+//先看官方题解思路，然后直接看kalipy的代码
+//kalipy的
 class Solution {
-    public:
-        //int maxProduct(vector<int>& nums) {
-        //    vector <int> maxF(nums), minF(nums);
-        //    for (int i = 1; i < nums.size(); ++i) {
-        //        maxF[i] = max(maxF[i - 1] * nums[i], max(nums[i], minF[i - 1] * nums[i]));
-        //        minF[i] = min(minF[i - 1] * nums[i], min(nums[i], maxF[i - 1] * nums[i]));
-        //    }
-        //    return *max_element(maxF.begin(), maxF.end());
-        //}
-        
-        //滚动数组
-        int maxProduct(vector<int>& nums) {
-            int maxF = nums[0], minF = nums[0], ans = nums[0];
-            for (int i = 1; i < nums.size(); ++i) {
-                int mx = maxF, mn = minF;
-                maxF = max(mx * nums[i], max(nums[i], mn * nums[i]));
-                minF = min(mn * nums[i], min(nums[i], mx * nums[i]));
-                ans = max(maxF, ans);
-            }
-            return ans;
+    public int maxProduct(int[] nums) {
+        int N = nums.length;
+
+        if (N == 0) return 0;
+
+        int[] max = new int[N];
+        int[] min = new int[N];
+        int ans = max[0] = min[0] = nums[0];
+
+        for (int i = 1; i < N; i++) {
+            max[i] = Math.max(nums[i], Math.max(max[i-1]*nums[i], min[i-1]*nums[i]));
+            min[i] = Math.min(nums[i], Math.min(min[i-1]*nums[i], max[i-1]*nums[i]));
+            ans = Math.max(ans, max[i]);
         }
-};
-
-
-void trimLeftTrailingSpaces(string &input) {
-    input.erase(input.begin(), find_if(input.begin(), input.end(), [](int ch) {
-                return !isspace(ch);
-                }));
-}
-
-void trimRightTrailingSpaces(string &input) {
-    input.erase(find_if(input.rbegin(), input.rend(), [](int ch) {
-                return !isspace(ch);
-                }).base(), input.end());
-}
-
-vector<int> stringToIntegerVector(string input) {
-    vector<int> output;
-    trimLeftTrailingSpaces(input);
-    trimRightTrailingSpaces(input);
-    input = input.substr(1, input.length() - 2);
-    stringstream ss;
-    ss.str(input);
-    string item;
-    char delim = ',';
-    while (getline(ss, item, delim)) {
-        output.push_back(stoi(item));
+        return ans;
     }
-    return output;
 }
 
-int main() {
-    string line;
-    while (getline(cin, line)) {
-        vector<int> nums = stringToIntegerVector(line);
+//kalipy的
+class Solution {
+    public int maxProduct(int[] nums) {
+        int N = nums.length;
 
-        int ret = Solution().maxProduct(nums);
+        if (N == 0) return 0;
 
-        string out = to_string(ret);
-        cout << out << endl;
+        int preMax = nums[0];
+        int preMin = nums[0];
+        int ans = nums[0];
+        int max, min = 0;
+        
+        for (int i = 1; i < N; i++) {
+            max = Math.max(nums[i], Math.max(preMax*nums[i], preMin*nums[i]));
+            min = Math.min(nums[i], Math.min(preMin*nums[i], preMax*nums[i]));
+            ans = Math.max(ans, max);
+            preMax = max;
+            preMin = min;
+        }
+        return ans;
     }
-    return 0;
 }

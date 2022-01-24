@@ -23,34 +23,22 @@ class Solution {
     }
 }
 
-public class MainClass45 {
-    public static int[] stringToIntegerArray(String input) {
-        input = input.trim();
-        input = input.substring(1, input.length() - 1);
-        if (input.length() == 0) {
-            return new int[0];
+//写法二
+class Solution {
+    public int jump(int[] nums) {
+        int maxPosition = 0;
+        int end = 0;
+        int step = 0;
+        if (nums.length == 1) return 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            maxPosition = Math.max(maxPosition, nums[i] + i);
+            if (i == end) {
+                end = maxPosition;
+                step++;
+                if (maxPosition == nums.length-1) return step;
+            }
         }
-
-        String[] parts = input.split(",");
-        int[] output = new int[parts.length];
-        for(int index = 0; index < parts.length; index++) {
-            String part = parts[index].trim();
-            output[index] = Integer.parseInt(part);
-        }
-        return output;
-    }
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-        while ((line = in.readLine()) != null) {
-            int[] nums = stringToIntegerArray(line);
-
-            int ret = new Solution().jump(nums);
-
-            String out = String.valueOf(ret);
-
-            System.out.print(out);
-        }
+        return step;
     }
 }

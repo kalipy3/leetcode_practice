@@ -12,7 +12,7 @@ class Solution {
         int start = 0;
         int end = nums.length - 1;
         int mid;
-        while (start <= end) {
+        while (start <= end) {//等号一定不能少
             mid = start + (end - start) / 2;
             if (nums[mid] == target) {
                 return mid;

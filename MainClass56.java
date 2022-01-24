@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+//这里用的官方题解 用kalipy的坐标轴的解法请注意这种情况[(0,3),(0,1)]
 class Solution {
     public int[][] merge(int[][] intervals) {
         if (intervals.length == 0) {
