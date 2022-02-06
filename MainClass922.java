@@ -24,6 +24,25 @@ class Solution {
     }
 }
 
+//写法二
+class Solution {
+    public int[] sortArrayByParityII(int[] A) {
+        int[] result = new int[A.length];
+        int ji = 1;
+        int ou = 0;
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] % 2 == 0) {
+                result[ou] = A[i];
+                ou += 2; //偶数下标移动
+            } else {
+                result[ji] = A[i];
+                ji += 2; //奇数下标移动
+            }
+        }
+        return result;
+    }
+}
+
 //方法二
 //如果原数组可以修改，则可以使用就地算法求解。
 //为数组的偶数下标部分和奇数下标部分分别维护指针 i,j。随后，在每一步中，如果 A[i] 为奇数，则不断地向前移动 j（每次移动两个单位），直到遇见下一个偶数。此时，可以直接将 A[i] 与 A[j] 交换。我们不断进行这样的过程，最终能够将所有的整数放在正确的位置上
@@ -66,3 +85,4 @@ class Solution {
         return A;
     }
 }
+

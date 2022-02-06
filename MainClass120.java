@@ -29,7 +29,7 @@ class Solution {
 
 https://leetcode-cn.com/problems/triangle/solution/di-gui-ji-yi-hua-dp-bi-xu-miao-dong-by-sweetiee/
 
-方法一
+//方法一 超时
 class Solution {
     public int minimumTotal(List<List<Integer>> triangle) {
         return  dfs(triangle, 0, 0);
@@ -43,7 +43,7 @@ class Solution {
     }
 }
 
-//方法二
+//方法二 记忆化 ok
 class Solution {
     Integer[][] memo;
     public int minimumTotal(List<List<Integer>> triangle) {
@@ -59,6 +59,29 @@ class Solution {
             return memo[i][j];
         }
         return memo[i][j] = Math.min(dfs(triangle, i + 1, j), dfs(triangle, i + 1, j + 1)) + triangle.get(i).get(j);
+    }
+}
+
+//方法二 记忆化 写法二 kalipy ok 推荐
+class Solution {
+    Integer[][] mem;
+    public int minimumTotal(List<List<Integer>> triangle) {
+        mem = new Integer[triangle.size()][triangle.size()];
+        return dfs(triangle, 0, 0);
+    }
+
+    private int dfs(List<List<Integer>> triangle, int dept, int col) {
+        if (triangle.size()-1 == dept) {
+            return triangle.get(dept).get(col);
+        }
+
+        if (mem[dept][col] != null) return mem[dept][col];
+
+        int l = dfs(triangle, dept+1, col);
+        int r = dfs(triangle, dept+1, col+1);
+        int ret = Math.min(l, r) + triangle.get(dept).get(col);
+        mem[dept][col] = ret;
+        return ret;
     }
 }
 
@@ -94,3 +117,49 @@ class Solution {
 
 
 
+
+
+
+
+// 回溯算法
+class Solution {
+    public:
+        int helper(vector<vector<int>>& triangle, int row, int col) {
+            if (triangle.size() - 1 == row) {
+                return triangle[row][col];
+            }
+
+            int down = helper(triangle, row + 1, col);
+            int right = helper(triangle, row + 1, col + 1);
+
+            return min(down, right) + triangle[row][col];
+        }
+        int minimumTotal(vector<vector<int>>& triangle) {
+            return helper(triangle, 0, 0);
+        }
+};
+
+// 回溯算法-备忘录
+class Solution {
+    public:
+        int helper(vector<vector<int>>& triangle, vector<vector<int>>& mem, int row, int col) {
+            if (triangle.size() - 1 == row) {
+                return triangle[row][col];
+            }
+            if (mem[row][col]) return mem[row][col];
+
+            int down = helper(triangle, mem, row + 1, col);
+            int right = helper(triangle, mem, row + 1, col + 1);
+
+            int ret = min(down, right) + triangle[row][col];
+            mem[row][col] = ret;
+            return ret;
+        }
+        
+        int minimumTotal(vector<vector<int>>& triangle) {
+            int len = triangle.size();
+            if (len == 0) return 0;
+            vector<vector<int>> mem(len, vector<int>(len));
+            return helper(triangle, mem, 0, 0);
+        }
+}

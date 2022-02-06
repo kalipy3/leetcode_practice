@@ -1,4 +1,4 @@
-//官方题解 方法一 暴力破解
+//方法一 暴力破解 kalipy一次过
 class Solution {
     public int minSubArrayLen(int s, int[] nums) {
         int n = nums.length;
@@ -20,7 +20,7 @@ class Solution {
     }
 }
 
-//官方题解 方法二 滑动窗口
+//官方题解 方法二 滑动窗口 推荐 简单易懂
 class Solution {
     public int minSubArrayLen(int s, int[] nums) {
         int n = nums.length;
@@ -43,3 +43,27 @@ class Solution {
     }
 }
 
+
+//kalipy一次过
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        int n = nums.length;
+        int ans = Integer.MAX_VALUE;
+
+        int l = 0;
+        int r = 0;
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += nums[r];
+            while (target <= sum) {
+                ans = Math.min(ans, r - l + 1);
+                sum -= nums[l];
+                l++;
+            }
+
+            r++;
+        }
+
+        return ans == Integer.MAX_VALUE ? 0 : ans;
+    }
+}

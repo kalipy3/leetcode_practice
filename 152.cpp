@@ -1,5 +1,5 @@
-//先看官方题解思路，然后直接看kalipy的代码
-//kalipy的
+//先看官方题解思路，然后直接看kalipy的代码 简单
+//kalipy的 写法一
 class Solution {
     public int maxProduct(int[] nums) {
         int N = nums.length;
@@ -19,7 +19,7 @@ class Solution {
     }
 }
 
-//kalipy的
+//kalipy的 写法二
 class Solution {
     public int maxProduct(int[] nums) {
         int N = nums.length;
@@ -38,6 +38,23 @@ class Solution {
             preMax = max;
             preMin = min;
         }
+        return ans;
+    }
+}
+
+//kalipy暴力破解 超时
+class Solution {
+    int ans = Integer.MIN_VALUE;
+
+    public int maxProduct(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            int sum = 1;
+            for (int j = i; j < nums.length; j++) {
+                sum *= nums[j];
+                ans = Math.max(ans, sum);
+            }
+        }
+
         return ans;
     }
 }

@@ -1,4 +1,4 @@
-//请一定先看33题
+//请一定先看33题 官方题解
 class Solution {
     public boolean search(int[] nums, int target) {
         int n = nums.length;
@@ -24,7 +24,8 @@ class Solution {
                     l = mid + 1;
                 }
             } else {
-                if (nums[mid] < target && target <= nums[n - 1]) {
+                //if (nums[mid] < target && target <= nums[n - 1]) {//ok
+                if (nums[mid] < target && target <= nums[r]) {//ok
                     l = mid + 1;
                 } else {
                     r = mid - 1;

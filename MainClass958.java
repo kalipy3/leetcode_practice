@@ -76,7 +76,7 @@ class Solution {
     {
         if(root == null) return;  //递归到了叶子节点
        
-        n++;  p = Math.max(p,k); //记录节点数和最大节点编号值
+        n++;  p = Math.max(p,k); //记录节点数和最大节点编号值 //此行代码在dfs()的前中后都行
         dfs(root.left,2*k);
         dfs(root.right,2*k + 1); //递归左右子树
     }

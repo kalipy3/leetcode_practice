@@ -1,7 +1,5 @@
-//作者：lin-shen-shi-jian-lu-k
 //链接：https://leetcode-cn.com/problems/find-peak-element/solution/er-fen-cha-zhao-zui-jian-jie-yi-dong-de-cvn1f/
-//来源：力扣（LeetCode）
-//著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+//请直接看代码 可以看懂
 class Solution {
     public int findPeakElement(int[] nums) {
         int l = 0, r = nums.length - 1;
@@ -11,6 +9,7 @@ class Solution {
             if(nums[mid] > nums[mid + 1]) r = mid;
             else l = mid + 1;
         }
+        //return l;//也ok
         return r;
     }
 }
@@ -31,7 +30,7 @@ public class Solution {
     }
 }
 
-//官方题解 方法三
+//方法三 kalipy一次过
 public class Solution {
     public int findPeakElement(int[] nums) {
         for (int i = 0; i < nums.length - 1; i++) {

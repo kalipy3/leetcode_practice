@@ -11,7 +11,8 @@ public class Solution {
             while (nums[i] > 0 && nums[i] <= len && nums[nums[i] - 1] != nums[i]) {
                 // 满足在指定范围内、并且没有放在正确的位置上，才交换
                 // 例如：数值 3 应该放在索引 2 的位置上
-                swap(nums, nums[i] - 1, i);
+                swap(nums, nums[i] - 1, i);//正确写法
+                //swap(nums, i, nums[i]-1);//错误写法，存在覆盖问题
             }
         }
 

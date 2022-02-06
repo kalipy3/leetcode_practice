@@ -1,8 +1,7 @@
 //官方题解
 class Solution {
-    int ans;
+    int ans = 0;
     public int diameterOfBinaryTree(TreeNode root) {
-        ans = 1;
         depth(root);
         return ans - 1;
     }

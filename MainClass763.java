@@ -1,4 +1,4 @@
-//官方题解
+//官方题解 请直接看代码即可 简单
 class Solution {
     public List<Integer> partitionLabels(String s) {
         int[] last = new int[26];

@@ -55,6 +55,7 @@ class Trie {
         return true;
     }
 }
+
 public class MainClass208
 {
     public static void main(String args[]) {

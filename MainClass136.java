@@ -1,3 +1,5 @@
+//两种方法都超简单 送分题
+
 //kalipy 请重点关注下map怎么遍历key
 class Solution {
     public int singleNumber(int[] nums) {

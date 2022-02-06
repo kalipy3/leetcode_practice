@@ -24,7 +24,36 @@ class Solution {
     }
 }
 
-作者：edelweisskoko
-链接：https://leetcode-cn.com/problems/max-area-of-island/solution/695-dao-yu-de-zui-da-mian-ji-dfs-bfsshua-oe8m/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+//kalipy一次过
+class Solution {
+    int ans = 0;
+    int sum = 0;
+    public int maxAreaOfIsland(int[][] grid) {
+        int m = grid.length;
+        int n = grid[0].length;
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                sum = 0;
+                dfs(grid, i, j);
+            }
+        }
+
+        return ans;
+    }
+
+    private void dfs(int[][] grid, int i, int j) {
+
+        if (i < 0 || j > grid[0].length-1 || i > grid.length-1 || j < 0 || grid[i][j] == 0) return;
+
+        sum += grid[i][j];
+        grid[i][j] = 0;
+
+        dfs(grid, i - 1, j);
+        dfs(grid, i, j + 1);
+        dfs(grid, i + 1, j);
+        dfs(grid, i, j - 1);
+
+        ans = Math.max(ans, sum);
+    }
+}

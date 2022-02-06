@@ -12,14 +12,32 @@ class Solution {
             slow = nums[slow];
             fast = nums[nums[fast]];
         }
-        int pre1 = 0;
-        int pre2 = slow;
-        while(pre1 != pre2){
-            pre1 = nums[pre1];
-            pre2 = nums[pre2];
+        int p = 0;
+        while(p != slow){
+            p = nums[p];
+            slow = nums[slow];
         }
-        return pre1;
+        return p;
     }
 }
 
+//kalipy看了题解后 一次过
+class Solution {
+    public int findDuplicate(int[] nums) {
+        int slow = 0;
+        int fast = 0;
 
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+
+        int p = 0;
+        while (p != slow) {
+            p = nums[p];
+            slow = nums[slow];
+        }
+
+        return p;
+    }
+}

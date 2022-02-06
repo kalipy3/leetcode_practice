@@ -1,3 +1,20 @@
+//kalipy一次过
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) return null;
+
+        TreeNode t = root.left;
+        root.left = root.right;
+        root.right = t;
+
+        invertTree(root.left);
+        invertTree(root.right);
+        
+        return root;
+    }
+}
+
+
 //作者：wang_ni_ma
 //链接：https://leetcode-cn.com/problems/invert-binary-tree/solution/dong-hua-yan-shi-liang-chong-shi-xian-226-fan-zhua/
 //来源：力扣（LeetCode）

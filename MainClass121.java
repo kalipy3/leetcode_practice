@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
+//官方题解 请直接看官方题解
 class Solution {
     //贪心
     //因为股票就买卖一次，那么贪心的想法很自然就是取最左最小值，取最右最大值，那么得到的差值就是最大利润。
@@ -19,34 +16,5 @@ class Solution {
     }
 }
 
-public class MainClass121 {
-    public static int[] stringToIntegerArray(String input) {
-        input = input.trim();
-        input = input.substring(1, input.length() - 1);
-        if (input.length() == 0) {
-            return new int[0];
-        }
+//动态规划 前i天的最大收益 = max{前i-1天的最大收益，第i天的价格-前i-1天中的最小价格}
 
-        String[] parts = input.split(",");
-        int[] output = new int[parts.length];
-        for(int index = 0; index < parts.length; index++) {
-            String part = parts[index].trim();
-            output[index] = Integer.parseInt(part);
-        }
-        return output;
-    }
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-        while ((line = in.readLine()) != null) {
-            int[] prices = stringToIntegerArray(line);
-
-            int ret = new Solution().maxProfit(prices);
-
-            String out = String.valueOf(ret);
-
-            System.out.print(out);
-        }
-    }
-}

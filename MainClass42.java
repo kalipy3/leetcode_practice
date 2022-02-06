@@ -1,30 +1,89 @@
-//请看官方题解，三种方法都很好懂
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Stack;
+//请看官方题解，三种方法都很好懂 先看方法一 再看方法一(kalipy修改版) 再看方法二(推荐方法二)
+//链接：https://leetcode-cn.com/problems/trapping-rain-water/solution/jie-yu-shui-by-leetcode-solution-tuvc/
+
 //方法一
-//class Solution {
-//    public int trap(int[] height) {
-//        int ans = 0;
-//        int left = 0, right = height.length - 1;
-//        int leftMax = 0, rightMax = 0;
-//        while (left < right) {
-//            leftMax = Math.max(leftMax, height[left]);
-//            rightMax = Math.max(rightMax, height[right]);
-//            if (height[left] < height[right]) {
-//                ans += leftMax - height[left];
-//                ++left;
-//            } else {
-//                ans += rightMax - height[right];
-//                --right;
-//            }
-//        }
-//        return ans;
-//    }
-//}
+class Solution {
+    public int trap(int[] height) {
+        int n = height.length;
+        if (n == 0) {
+            return 0;
+        }
+
+        int[] leftMax = new int[n];
+        leftMax[0] = height[0];
+        for (int i = 1; i < n; ++i) {
+            leftMax[i] = Math.max(leftMax[i - 1], height[i]);
+        }
+
+        int[] rightMax = new int[n];
+        rightMax[n - 1] = height[n - 1];
+        for (int i = n - 2; i >= 0; --i) {
+            rightMax[i] = Math.max(rightMax[i + 1], height[i]);
+        }
+
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            ans += Math.min(leftMax[i], rightMax[i]) - height[i];
+        }
+        return ans;
+    }
+}
+
+//方法一 kalipy修改版
+class Solution {
+    //leftMax[i]:柱子i及其左边柱子的最大值
+    public int trap(int[] height) {
+        int n = height.length;
+        if (n == 0) {
+            return 0;
+        }
+
+        int[] leftMax = new int[n];
+        leftMax[0] = height[0];
+        for (int i = 1; i < n; ++i) {
+            leftMax[i] = Math.max(leftMax[i - 1], height[i]);
+        }
+
+        int[] rightMax = new int[n];
+        rightMax[n - 1] = height[n - 1];
+        for (int i = n - 2; i >= 0; --i) {
+            rightMax[i] = Math.max(rightMax[i + 1], height[i]);
+        }
+
+        int ans = 0;
+        for (int i = 1; i < n-1; ++i) {
+            if (Math.min(leftMax[i-1], rightMax[i+1]) - height[i] < 0) continue;//凸字形会产生负数，不能产生"负水"
+            ans += Math.min(leftMax[i-1], rightMax[i+1]) - height[i];
+        }
+
+        return ans;
+    }
+}
+
+
 
 //方法二
+class Solution {
+    public int trap(int[] height) {
+        int ans = 0;
+        int left = 0, right = height.length - 1;
+        int leftMax = 0, rightMax = 0;
+        while (left < right) {
+            leftMax = Math.max(leftMax, height[left]);
+            rightMax = Math.max(rightMax, height[right]);
+            if (height[left] < height[right]) {
+                ans += leftMax - height[left];
+                ++left;
+            } else {
+                ans += rightMax - height[right];
+                --right;
+            }
+        }
+        return ans;
+    }
+}
+
+//方法三
 class Solution {
     public int trap(int[] height) {
         int sum = 0;
@@ -51,34 +110,3 @@ class Solution {
 
 }
 
-public class MainClass42 {
-    public static int[] stringToIntegerArray(String input) {
-        input = input.trim();
-        input = input.substring(1, input.length() - 1);
-        if (input.length() == 0) {
-            return new int[0];
-        }
-
-        String[] parts = input.split(",");
-        int[] output = new int[parts.length];
-        for(int index = 0; index < parts.length; index++) {
-            String part = parts[index].trim();
-            output[index] = Integer.parseInt(part);
-        }
-        return output;
-    }
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-        while ((line = in.readLine()) != null) {
-            int[] height = stringToIntegerArray(line);
-
-            int ret = new Solution().trap(height);
-
-            String out = String.valueOf(ret);
-
-            System.out.print(out);
-        }
-    }
-}

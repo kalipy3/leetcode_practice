@@ -1,4 +1,23 @@
-//官方题解 方法一 推荐方法一
+//kalipy一次过
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) return true;
+
+        int ans = dfs(root.left) - dfs(root.right);
+        return (Math.abs(ans) <= 1) && isBalanced(root.left) && isBalanced(root.right);
+    }
+
+    private int dfs(TreeNode root) {
+        if (root == null) return 0;
+
+        int L = dfs(root.left);
+        int R = dfs(root.right);
+        return Math.max(L, R) + 1;
+
+    }
+}
+
+//官方题解 方法一
 class Solution {
     public boolean isBalanced(TreeNode root) {
         return height(root) >= 0;

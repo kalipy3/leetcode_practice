@@ -1,4 +1,4 @@
-//官方题解
+//kalipy一次过
 class Solution {
     public int minPathSum(int[][] grid) {
         if (grid == null || grid.length == 0 || grid[0].length == 0) {

@@ -35,42 +35,44 @@ class Solution {
 
         }
         return -1;
-
     }
-
-
 }
 
-public class MainClass33 {
-    public static int[] stringToIntegerArray(String input) {
-        input = input.trim();
-        input = input.substring(1, input.length() - 1);
-        if (input.length() == 0) {
-            return new int[0];
-        }
-
-        String[] parts = input.split(",");
-        int[] output = new int[parts.length];
-        for(int index = 0; index < parts.length; index++) {
-            String part = parts[index].trim();
-            output[index] = Integer.parseInt(part);
-        }
-        return output;
+//很多人问，那里为什么是小于等于。其实就是为了最后只剩两个数的时候，怎么和我那个逻辑匹配。用小于也可以，参考下面的写法。
+//写法二
+public int search(int[] nums, int target) {
+    if(nums == null || nums.length == 0){
+        return -1;
     }
+    int start = 0;
+    int end = nums.length - 1;
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-        while ((line = in.readLine()) != null) {
-            int[] nums = stringToIntegerArray(line);
-            line = in.readLine();
-            int target = Integer.parseInt(line);
+    while (start <= end){
+        int mid = start + (end -start)/2;
+        if (nums[mid] == target){
+            return mid;
+        }
 
-            int ret = new Solution().search(nums, target);
+        //后半部分有序
+        if(nums[mid] < nums[end]){
+            if(nums[mid] < target && target <= nums[end]){
+                start = mid + 1;
+            } else {
+                end = mid - 1;
+            }
 
-            String out = String.valueOf(ret);
+        } else {
+            if(nums[mid] > target && target >= nums[start]){
+                end = mid - 1;
 
-            System.out.print(out);
+            } else {
+                start = mid + 1;
+
+            }
+
+
         }
     }
+    return -1;
+
 }

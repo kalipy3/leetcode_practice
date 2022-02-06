@@ -54,3 +54,26 @@ class Solution {
         sum = (sum - root.val) / 10;
     }
 }
+
+//写法四 kalipy
+class Solution {
+    int ans = 0;
+    public int sumNumbers(TreeNode root) {
+        if (root == null) return 0;
+        dfs(root, 0);
+        return ans;
+    }
+
+    private void dfs(TreeNode root, int sum) {
+        if (root == null) return;
+
+        sum = sum*10 + root.val;
+        dfs(root.left, sum);
+        dfs(root.right, sum);
+
+        if (root.left == null && root.right == null) {
+            ans += sum;
+            return;
+        }
+    }
+}

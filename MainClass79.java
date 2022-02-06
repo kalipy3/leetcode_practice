@@ -59,7 +59,7 @@ public class Solution {
 }
 
 
-//写法二
+//写法二 推荐
 class Solution {
     public boolean exist(char[][] board, String word) {
         char[] words = word.toCharArray();
