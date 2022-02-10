@@ -1,4 +1,4 @@
-//kalipy
+//kalipy一次过
 class Solution {
     public ListNode oddEvenList(ListNode head) {
         if (head == null) return null;
@@ -20,3 +20,4 @@ class Solution {
         return head;
     }
 }
+

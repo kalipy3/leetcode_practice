@@ -1,3 +1,6 @@
+两种方法都好理解
+
+
 //作者：jiang-hui-4
 //链接：https://leetcode-cn.com/problems/sliding-window-maximum/solution/you-xian-dui-lie-zui-da-dui-dan-diao-dui-dbn9/
 //来源：力扣（LeetCode）
@@ -63,5 +66,6 @@ public int[] maxSlidingWindow(int[] nums, int k) {
     }
     return ans;
 }
+
 
 

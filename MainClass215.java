@@ -65,8 +65,16 @@ class Solution {
         int x = nums[r];
         int j = l;
 
+        //eg1:
         //x = 3
-        //1, 5, 2, 4, 1
+        //1, 5, 2, 4, 3 
+        //1 2 5 4 3
+        //1 2 3 4 5
+        
+        //eg2:
+        //x=1
+        //1 5 2 4 1
+        //1 1 2 4 5
         for (int i = l; i < r; i++) {
             if (nums[i] <= x) {
                 swap(nums, i, j);

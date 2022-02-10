@@ -1,3 +1,29 @@
+//kalipy写法
+class Solution {
+    Set<Integer> set = new HashSet<>();
+    public boolean isHappy(int n) {
+        int slow = n;
+        int fast = getSum(n);
+        while (slow != fast) {
+            slow = getSum(slow);
+            fast = getSum(fast);
+            fast = getSum(fast);
+        }
+
+        return 1 == slow;
+    }
+
+    public int getSum(int n) {
+        int res = 0;
+        while (n != 0) {
+            res += (n%10) * (n%10);
+            n /= 10;
+        }
+        return res;
+    }
+}
+
+
 //方法一 官方题解
 class Solution {
     public boolean isHappy(int n) {

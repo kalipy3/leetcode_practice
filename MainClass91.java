@@ -16,10 +16,12 @@
     
 */
 
-作者：sdwwld
 链接：https://leetcode-cn.com/problems/decode-ways/solution/shu-ju-jie-gou-he-suan-fa-di-gui-he-dong-pnyf/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+//定义dp[i]表示前i个字符的解码数。
+//如果要求前i个字符的解码数
+//
+//    我们可以先求前i-1个字符的解码数，但前提条件是当前字符也可以解码（一个字符的话，只要不是0，都可以）
+//    还可以求前i-2个字符的解码数，但前提条件是当前字符和前一个字符构成的两个数字是有效的。
 //思路二
 public int numDecodings(String s) {
     int length = s.length();
@@ -55,5 +57,6 @@ int numDecodings(string s) {
     }
     return curr;
 }
+
 
 

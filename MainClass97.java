@@ -1,3 +1,65 @@
+//方法一 dfs
+https://leetcode-cn.com/problems/interleaving-string/solution/shou-hua-tu-jie-dfshui-su-dfsji-yi-hua-by-hyj8/
+//js
+/*
+ *
+const isInterleave = (s1, s2, s3) => {
+    if (s1.length + s2.length != s3.length) return false;
+
+    const check = (i, j, k) => { // 检查ijk开始的子串是否满足题目条件
+        // k越界，s3扫描完了，返回true
+        if (k == s3.length) return true;       
+
+        let isValid = false;                   
+        // i指针没有越界，且s1[i]和s3[k]相同
+        if (i < s1.length && s1[i] == s3[k]) { 
+            isValid = check(i + 1, j, k + 1);    // i、k右移一位，递归考察
+        }
+        // j 指针没有越界，且s2[i]和s3[k]相同
+        if (j < s2.length && s2[j] == s3[k]) { 
+            isValid = isValid || check(i, j + 1, k + 1); 
+            // 有可能i、j、k指向相同的字符，尝试 i、k 右移，但已经做过了
+            // isValid 就是 check(i + 1, j, k + 1) 的结果
+            // 如果它为true，就不用执行 j、k 右移的递归(因为之前已经if (s1.length + s2.length != s3.length) return false;，如果s1和s3相等，则s2必为""字符串)，如果是false，执行递归
+        }
+        return isValid; // 整个遍历过程都没有返回true，则返回默认的false
+    };
+
+    return check(0, 0, 0);
+};
+
+*/
+
+//java 记忆化dfs
+class Solution {
+    int l1, l2, l3;
+    String s1, s2, s3;
+    boolean[][] visited;
+    public boolean isInterleave(String s1, String s2, String s3) {
+        l1 = s1.length();
+        l2 = s2.length();
+        l3 = s3.length();
+        if (l1 + l2 != l3)  return false;
+        visited = new boolean[l1 + 1][l2 + 1];
+        this.s1 = s1;
+        this.s2 = s2;
+        this.s3 = s3;
+        
+        return dfs(0, 0, 0);
+    }
+    private boolean dfs(int i, int j, int k) {
+        if (k == l3)    return true;
+        if (visited[i][j])  return false;
+        visited[i][j] = true;
+        if (i < l1 && s1.charAt(i) == s3.charAt(k) && dfs(i + 1, j, k + 1))         return true;   
+        if (j < l2 && s2.charAt(j) == s3.charAt(k) && dfs(i, j + 1, k + 1))         return true;
+        return false;
+    }
+}
+
+
+
+
 https://leetcode-cn.com/problems/interleaving-string/solution/lei-si-lu-jing-wen-ti-zhao-zhun-zhuang-tai-fang-ch/
 
 

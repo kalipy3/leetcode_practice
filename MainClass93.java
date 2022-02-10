@@ -96,30 +96,3 @@ class Solution {
         return true;
     }
 }
-
-
-
-
-public class MainClass93 {
-
-    public static String stringListToString(List<String> stringList) {
-        StringBuilder sb = new StringBuilder("[");
-        for (String item : stringList) {
-            sb.append(item);
-            sb.append(",");
-        }
-
-        sb.setCharAt(sb.length() - 1, ']');
-        return sb.toString();
-    }
-
-    public static void main(String[] args) throws IOException {
-        String s = "25525511135"; 
-
-        List<String> ret = new Solution().restoreIpAddresses(s);
-
-        String out = stringListToString(ret);
-
-        System.out.print(out);
-    }
-}

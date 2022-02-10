@@ -1,6 +1,5 @@
 //推荐方法二 不易错
 
-
 //方法一 推荐写法二
 作者：carlsun-2
 链接：https://leetcode-cn.com/problems/palindromic-substrings/solution/dai-ma-sui-xiang-lu-dai-ni-xue-tou-dpzi-vidge/
@@ -53,10 +52,9 @@ class Solution {
 
 
 //方法二
-//作者：jawhiow
+//链接：https://leetcode-cn.com/problems/palindromic-substrings/solution/dai-ma-sui-xiang-lu-dai-ni-xue-tou-dpzi-vidge/
+
 //链接：https://leetcode-cn.com/problems/palindromic-substrings/solution/liang-dao-hui-wen-zi-chuan-de-jie-fa-xiang-jie-zho/
-//来源：力扣（LeetCode）
-//著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 class Solution {
     int num = 0;
     public int countSubstrings(String s) {

@@ -1,4 +1,4 @@
-//官方题解
+//官方题解 kalipy的思路
 class Solution {
     public ListNode partition(ListNode head, int x) {
         ListNode small = new ListNode(0);
@@ -20,5 +20,6 @@ class Solution {
         return smallHead.next;
     }
 }
+
 
 

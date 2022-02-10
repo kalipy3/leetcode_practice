@@ -1,3 +1,29 @@
+//暴力破解
+public boolean isPalindromic(String s) {
+		int len = s.length();
+		for (int i = 0; i < len / 2; i++) {
+			if (s.charAt(i) != s.charAt(len - i - 1)) {
+				return false;
+			}
+		}
+		return true;
+	}
+public String longestPalindrome(String s) {
+    String ans = "";
+    int max = 0;
+    int len = s.length();
+    for (int i = 0; i < len; i++)
+        for (int j = i + 1; j <= len; j++) {
+            String test = s.substring(i, j);
+            if (isPalindromic(test) && test.length() > max) {
+                ans = s.substring(i, j);
+                max = Math.max(max, ans.length());
+            }
+        }
+    return ans;
+}
+
+
 作者：reedfan
 链接：https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-fa-he-dong-tai-gui-hua-by-reedfa/
 来源：力扣（LeetCode）
@@ -74,12 +100,6 @@ class Solution {
 
 
 
-
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 //从下到上，从左到右遍历，且只遍历右上角(因为dp[i][j]的定义决定i<=j)
 class Solution {
     public String longestPalindrome(String s) {
@@ -105,14 +125,3 @@ class Solution {
 
 }
 
-public class MainClass5 {
-    public static void main(String[] args) throws IOException {
-        String s = "cbbd";
-
-        String ret = new Solution().longestPalindrome(s);
-
-        String out = (ret);
-
-        System.out.print(out);
-    }
-}

@@ -40,3 +40,4 @@ class Solution {
         return size == Integer.MAX_VALUE ? "" : s.substring(start, start + size);
     }
 }
+

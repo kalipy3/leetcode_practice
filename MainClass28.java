@@ -6,6 +6,7 @@ class Solution {
 
         if (needle.equals("")) return 0;
 
+        //for (int i = 0; i + n2 <= n1; i++) {//也ok
         for (int i = 0; i < n1-n2+1; i++) {
             int p1 = i;
             int j = 0;

@@ -1,9 +1,10 @@
+
 //完全背包，死命咬文嚼字`选与不选`这句话
-//先看这个题解!!!!!!!!!
+//先看这个题解!!!!!!!!! 或者直接看官方题解也行
 https://leetcode-cn.com/problems/perfect-squares/solution/dai-ma-sui-xiang-lu-279-wan-quan-ping-fa-9ieo/
 
 
-
+//f[i] 表示最少需要多少个数的平方来表示整数 i
 class Solution {
     public int numSquares(int n) {
         int[] dp = new int[n+1];
@@ -19,6 +20,7 @@ class Solution {
         return dp[n];
     }
 }
+
 
 i=1,
 j=1

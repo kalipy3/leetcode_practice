@@ -62,3 +62,54 @@ class Solution {
     }
 }
 
+
+//kalipy一次过
+class Solution {
+    public void reorderList(ListNode head) {
+
+        ListNode l1 = head;
+        ListNode mid = findMid(l1);
+        ListNode l2 = reverse(mid.next);
+        mid.next = null;
+        merge(l1, l2);
+    }
+
+    private ListNode findMid(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    private ListNode reverse(ListNode node) {
+        ListNode pre = null;
+        ListNode cur = node;
+
+        while (cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+
+        return pre;
+    }
+
+    private void merge(ListNode l1, ListNode l2) {
+        ListNode head = l1;
+
+        while (l2 != null) {
+            ListNode l1_next = l1.next;
+            ListNode l2_next = l2.next;
+            l1.next = l2;
+            l2.next = l1_next;
+            l1 = l1_next;
+            l2 = l2_next;
+        }
+    }
+}
