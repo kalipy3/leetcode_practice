@@ -16,11 +16,4 @@ class Solution {
     }
 }
 
-public class MainClass70
-{
-    public static void main(String args[]) {
-        int res = new Solution().numWays(7);
-        System.out.println(res);
-    }
-}
 
