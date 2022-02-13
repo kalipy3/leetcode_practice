@@ -1,10 +1,10 @@
 //官方题解 方法一 str+=效率低 不推荐(推荐方法一的写法二)
 public class Codec {
-    public String serialize(TreeNode root) {
+    public String serialize(TreeNode root) {//序列化
         return rserialize(root, "");
     }
   
-    public TreeNode deserialize(String data) {
+    public TreeNode deserialize(String data) {//反序列化
         String[] dataArray = data.split(",");
         List<String> dataList = new LinkedList<String>(Arrays.asList(dataArray));
         return rdeserialize(dataList);
@@ -77,3 +77,4 @@ public class Codec {
 
 推荐阅读:
 https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/solution/shou-hui-tu-jie-gei-chu-dfshe-bfsliang-chong-jie-f/
+
