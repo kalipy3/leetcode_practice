@@ -28,28 +28,6 @@ class Solution {
     }
 }
 
-//作者：Ben_
-//链接：https://leetcode-cn.com/problems/132-pattern/solution/xiang-jie-yong-dan-diao-zhan-ko456-by-be-kxmk/
-//来源：力扣（LeetCode）
-//著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-class Solution {
-    public boolean find132pattern(int[] nums) {
-        int n=nums.length;
-        Deque<Integer>stack=new LinkedList<>();//维护一个单调栈，从栈底到栈顶单调非递增
-        int numsk=Integer.MIN_VALUE;//记录题目中的nums[k]
-        for(int i=n-1;i>=0;i--){//按题目要求，直接满足了i<j<k
-            int cur=nums[i];
-            if(cur<numsk){//找到13
-                return true;
-            }
-            while(!stack.isEmpty()&&cur>stack.peekFirst()){//找到32,numsk为3，cur为2
-                numsk=Math.max(numsk,stack.pollFirst());
-            }
-            stack.addFirst(cur);
-        }
-        return false;
-    }
-}
 
 
 
@@ -79,4 +57,5 @@ class Solution {
         return false;
     }
 }
+
 

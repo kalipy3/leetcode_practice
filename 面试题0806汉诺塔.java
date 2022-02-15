@@ -7,7 +7,7 @@ class Solution {
         move(N, A, B, C);
     }
 
-    // 将N个圆盘从A柱经由B柱移动到C柱
+    // 将N个圆盘从A柱经由B柱移动到C柱!!!!!!!
     void move(int N, List<Integer> A, List<Integer> B, List<Integer> C) {
         if (N == 1) { // 直接将A柱的圆盘移动到C柱
             C.add(0, A.remove(0));
@@ -21,23 +21,22 @@ class Solution {
 }
 
 //写法二
+/*
 class Solution {
-    public void hanota(List<Integer> origin, List<Integer> buffer, List<Integer> destination) {
-        // 使用递归函数来完成,需要计数
-        move(origin.size(), origin, destination, buffer);
+public:
+    void hanota(vector<int>& A, vector<int>& B, vector<int>& C) {
+        int n = A.size();
+        move(n, A, B, C);
     }
 
-    private void move(int n, List<Integer> origin, List<Integer> destination, List<Integer> buffer) {
-        // 如果碰到了一个栈的底,那么说明这个位置上已经没有盘子移动了
-        if (n <= 0) return;
-        // 从 origin 移动到 buffer 上
-        move(n - 1, origin, buffer, destination);
-        // 从 origin 移动到 destination 上
-        destination.add(origin.get(origin.size() - 1));
-        origin.remove(origin.size() - 1);
-        // 从 buffer 移动到 destination 上
-        move(n - 1, buffer, destination, origin);
+    void move(int n, vector<int>& A, vector<int>& B, vector<int>& C){
+        if (n < 1){
+            return;
+        }
+        move(n-1, A, C, B);    // 将A上面n-1个通过C移到B
+        C.push_back(A.back());  // 将A最后一个移到C
+        A.pop_back();          // 这时，A空了
+        move(n-1, B, A, C);     // 将B上面n-1个通过空的A移到C
     }
-}
-
-
+};
+*/

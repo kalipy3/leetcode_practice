@@ -1,4 +1,6 @@
 //写法k 推荐
+//定义 dp[i] 为考虑前 i 个元素，以第 i 个数字结尾的最长上升子序列的长度，注意 nums[i] 必须被选取。
+
 class Solution {
     public int lengthOfLIS(int[] nums) {
         if(nums.length == 0) return 0;

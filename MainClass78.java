@@ -2,7 +2,7 @@
 //链接：https://leetcode-cn.com/problems/subsets/solution/dai-ma-sui-xiang-lu-78-zi-ji-hui-su-sou-6yfk6/
 //来源：力扣（LeetCode）
 //著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-//方法一 回溯
+//方法一 回溯 推荐
 class Solution {
     List<List<Integer>> result = new ArrayList<>();// 存放符合条件结果的集合
     LinkedList<Integer> path = new LinkedList<>();// 用来存放符合条件结果
@@ -28,7 +28,7 @@ class Solution {
     }
 }
 
-//方法二 转化为二叉树的遍历,即dfs或bfs
+//方法二 转化为二叉树的遍历,即dfs或bfs 极其不推荐
 作者：dao-fa-zi-ran-2
 链接：https://leetcode-cn.com/problems/subsets/solution/er-jin-zhi-wei-zhu-ge-mei-ju-dfssan-chong-si-lu-9c/
 来源：力扣（LeetCode）

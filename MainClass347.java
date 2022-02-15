@@ -1,4 +1,4 @@
-//官方题解 方法一 大跟堆 优点，空间复杂度低
+//官方题解 方法一 小跟堆 优点，空间复杂度低
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> occurrences = new HashMap<Integer, Integer>();
@@ -31,7 +31,7 @@ class Solution {
     }
 }
 
-//方法二 小根堆 缺点，空间复杂度高
+//方法二 大根堆 缺点，空间复杂度高
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -47,3 +47,4 @@ class Solution {
         return ans;
     }
 }
+

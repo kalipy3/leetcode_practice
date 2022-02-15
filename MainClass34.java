@@ -1,4 +1,5 @@
 //kalipy
+//请直接看代码 简单题
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         if (nums.length == 0) return new int[]{-1, -1};

@@ -1,4 +1,6 @@
 //请一定先看33题 官方题解
+//然后再看这个题解 https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/solution/zai-javazhong-ji-bai-liao-100de-yong-hu-by-reedfan/
+//官方题解
 class Solution {
     public boolean search(int[] nums, int target) {
         int n = nums.length;
@@ -37,7 +39,3 @@ class Solution {
 }
 
 
-作者：LeetCode-Solution
-链接：https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/solution/sou-suo-xuan-zhuan-pai-xu-shu-zu-ii-by-l-0nmp/
-来源：力扣（LeetCode）
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

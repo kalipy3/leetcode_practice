@@ -51,7 +51,7 @@ class Solution {
             ++cnt1[s1.charAt(i) - 'a'];
             ++cnt2[s2.charAt(i) - 'a'];
         }
-        if (Arrays.equals(cnt1, cnt2)) {
+        if (Arrays.equals(cnt1, cnt2)) {//这句不能少
             return true;
         }
         for (int i = n; i < m; ++i) {

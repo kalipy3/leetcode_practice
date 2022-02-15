@@ -111,7 +111,7 @@ class Solution {
 
 
 
-//写法二
+//写法二 超级推荐
 //sum 是前 i+1 项和，每次加入集合的是前 i 项和的模。 当两个前缀和*关于模 k 同余*时，它们的差值就是满足条件的子数组和
 class Solution {
     public boolean checkSubarraySum(int[] nums, int k) {

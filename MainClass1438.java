@@ -1,3 +1,27 @@
+//先看这个神仙题解和c++的代码  链接：https://leetcode-cn.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/solution/he-gua-de-shu-ju-jie-gou-hua-dong-chuang-v46j/
+/*
+class Solution {
+public:
+    int longestSubarray(vector<int>& nums, int limit) {
+        multiset<int> st;
+        int left = 0, right = 0;
+        int res = 0;
+        while (right < nums.size()) {
+            st.insert(nums[right]);
+            while (*st.rbegin() - *st.begin() > limit) {
+                st.erase(st.find(nums[left]));
+                left ++;
+            }
+            res = max(res, right - left + 1);
+            right ++;
+        }
+        return res;
+    }
+};
+
+*/
+
+
 //方法一 请直接看代码,直到看懂为止
 class Solution {
     public int longestSubarray(int[] nums, int limit) {
