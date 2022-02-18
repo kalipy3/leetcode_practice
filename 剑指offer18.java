@@ -24,3 +24,16 @@ class Solution {
         return dummy.next;
     }
 }
+
+//方法二
+/*
+class Solution {
+public:
+    ListNode* deleteNode(ListNode* head, int val) {
+        if(!head) return NULL;
+        if(head->val == val) return head->next;
+        head->next = deleteNode(head->next,val);
+        return head;
+    }
+};
+*/

@@ -38,7 +38,7 @@ private boolean valid(char[][] chess, int row, int col) {
         }
     }
     //判断当前坐标的右上角有没有皇后
-    for (int i = row - 1, j = col + 1; i >= 0 && j < chess.length; i--, j++) {
+    for (int i = row - 1, j = col + 1; i >= 0 && j < chess[i].length; i--, j++) {
         if (chess[i][j] == 'Q') {
             return false;
         }

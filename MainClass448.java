@@ -4,7 +4,7 @@
  *
  * Distributed under terms of the MIT license.
  */
-//官方题解 多看几遍
+//官方题解 多看几遍 推荐
 class Solution {
     public List<Integer> findDisappearedNumbers(int[] nums) {
         int n = nums.length;
@@ -43,3 +43,23 @@ public:
         return ans;
     }
 };
+
+//方法三 评论区
+/*
+这题用鸽笼原理实现，由题意可得，1~n的位置表示1~n个笼子，如果出现过，相应的“鸽笼”就会被占掉，我们将数字置为负数表示被占掉了。 最后再遍历一遍，如果“鸽笼”为正数就是没出现的数字。
+
+class Solution:
+    def findDisappearedNumbers(self, nums: List[int]) -> List[int]:
+        
+        for n in nums:
+            nums[abs(n)-1] = - abs(nums[abs(n)-1])
+            #找到相应的鸽笼位置，取反
+
+        res = []
+        for i, v in enumerate(nums):
+            if v >0:#如果大于0，说明没被占过，也就是没有出现过的数字
+                res.append(i+1)
+
+        return res
+
+*/

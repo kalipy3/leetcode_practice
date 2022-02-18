@@ -46,3 +46,14 @@ class RandomizedSet {
     return list.get(rand.nextInt(list.size()));
   }
 }
+
+//实际面试时，为防止出错，按照如下例子来写删除的代码
+/*
+ list:1 val last
+ map: {1,0} {val, 1} {last, 2}
+
+ remove(val)
+
+ list:1 last
+ map: {1,0} {3,1}
+*/
