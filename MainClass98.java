@@ -22,3 +22,28 @@ class Solution {
 链接：https://leetcode-cn.com/problems/validate-binary-search-tree/solution/zhong-xu-bian-li-qing-song-na-xia-bi-xu-miao-dong-/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+//kalipy一次过
+class Solution {
+    TreeNode pre = null;
+    public boolean isValidBST(TreeNode root) {
+        if (root == null) return true;
+
+        return dfs(root);
+    }
+
+    private boolean dfs(TreeNode root) {
+        if (root == null) return true;
+
+        if(!dfs(root.left)) return false;
+
+
+        if (pre != null && root.val <= pre.val) {
+            return false;
+        }
+        pre = root;
+
+
+        return dfs(root.right);
+    }
+}

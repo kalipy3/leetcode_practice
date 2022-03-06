@@ -3,11 +3,11 @@
 //官方题解 方法一
 class Solution {
     public double myPow(double x, int n) {
-        long N = n;
+        long N = n;//int N = n;也ok
         return N >= 0 ? quickMul(x, N) : 1.0 / quickMul(x, -N);
     }
 
-    public double quickMul(double x, long N) {
+    public double quickMul(double x, long N) {//int N也ok
         if (N == 0) {
             return 1.0;
         }

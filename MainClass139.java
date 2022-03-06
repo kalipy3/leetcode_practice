@@ -23,6 +23,7 @@ class Solution {
 
 
 //正确解法 官方题解 先看官方题解 然后直接用代码过一遍例子 很好懂
+//dp[i] : 字符串长度为i的话，dp[i]为true，表示可以拆分为一个或多个在字典中出现的单词
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         // 可以类比于背包问题
@@ -34,7 +35,7 @@ class Solution {
             for (int j = 0; j < i; j++) {
                 if (memo[j] && wordDict.contains(s.substring(j, i))) {
                     memo[i] = true;
-                    break;
+                    break;//break不要也ok
                 }
             }
         }
@@ -65,5 +66,60 @@ const wordBreak = (s, wordDict) => {
 	return canBreak(0); // 递归的入口，从0到末尾的子串能否break
 }
 
+
+*/
+
+/*
+class Solution {
+private:
+    bool backtracking (const string& s, const unordered_set<string>& wordSet, int startIndex) {
+        if (startIndex >= s.size()) {
+            return true;
+        }
+        for (int i = startIndex; i < s.size(); i++) {
+            string word = s.substr(startIndex, i - startIndex + 1);
+            if (wordSet.find(word) != wordSet.end() && backtracking(s, wordSet, i + 1)) {
+                return true;
+            }
+        }
+        return false;
+    }
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
+        return backtracking(s, wordSet, 0);
+    }
+};
+*/
+
+/*
+class Solution {
+private:
+    bool backtracking (const string& s,
+            const unordered_set<string>& wordSet,
+            vector<int>& memory,
+            int startIndex) {
+        if (startIndex >= s.size()) {
+            return true;
+        }
+        // 如果memory[startIndex]不是初始值了，直接使用memory[startIndex]的结果
+        if (memory[startIndex] != -1) return memory[startIndex];
+        for (int i = startIndex; i < s.size(); i++) {
+            string word = s.substr(startIndex, i - startIndex + 1);
+            if (wordSet.find(word) != wordSet.end() && backtracking(s, wordSet, memory, i + 1)) {
+                memory[startIndex] = 1; // 记录以startIndex开始的子串是可以被拆分的
+                return true;
+            }
+        }
+        memory[startIndex] = 0; // 记录以startIndex开始的子串是不可以被拆分的
+        return false;
+    }
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        unordered_set<string> wordSet(wordDict.begin(), wordDict.end());
+        vector<int> memory(s.size(), -1); // -1 表示初始化状态
+        return backtracking(s, wordSet, memory, 0);
+    }
+};
 
 */

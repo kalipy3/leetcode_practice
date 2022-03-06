@@ -17,7 +17,7 @@ class Solution {
     }
 }
 
-//写法一
+//写法一 推荐
 class Solution {
     int res = 0;
     public int sumNumbers(TreeNode root) {

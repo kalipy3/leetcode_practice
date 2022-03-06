@@ -22,6 +22,14 @@ class Solution {
             if(end==null){
                 break;
             }
+            //if (end == null) {//kalipy 如果字节跳动面试官要求节点数小于k，也要执行翻转，则用这个if(end==null)版本
+            //    ListNode rHead = reverse(pre.next);
+            //    pre.next = rHead;
+
+            //    return dummy.next;
+            //}
+
+
             //先记录下end.next,方便后面链接链表
             ListNode next=end.next;
             //然后断开链表

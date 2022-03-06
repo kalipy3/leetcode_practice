@@ -8,6 +8,7 @@ public:
         vector<vector<int>> ans(n, vector<int>(n));//定义一个n*n的二维矩阵
         int top = 0, right = n-1, bottom = n-1, left = 0;//初始化四个边界
         int num = 1;//表示填入的元素大小，从1开始
+        //while(num <= n*n)//也ok
         while(left <= right && top <= bottom)//循环条件
         {
             for(int i = left; i <= right; i++)

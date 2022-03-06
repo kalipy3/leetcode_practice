@@ -4,7 +4,7 @@
 //著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 class Solution {
     public int jump(int[] nums) {
-        int end = 0;
+        int end = 0;//必须起跳的点
         int maxPosition = 0; 
         int steps = 0;
         for(int i = 0; i < nums.length - 1; i++){

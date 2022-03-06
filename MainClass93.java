@@ -64,6 +64,13 @@ class Solution {
         }
         for (int i = startIndex; i < s.length(); i++) {
             if (isValid(s, startIndex, i)) {
+                /* test.java
+                String str = "abcde";
+                System.out.println(str.substring(0,0));//
+                System.out.println(str.substring(0,1));//a
+                System.out.println(str.substring(0));//abcde
+                System.out.println(str.substring(1));//bcde
+                */
                 s = s.substring(0, i + 1) + "." + s.substring(i + 1);    //在str的后⾯插⼊⼀个逗点
                 pointNum++;
                 backTrack(s, i + 2, pointNum);// 插⼊逗点之后下⼀个⼦串的起始位置为i+2

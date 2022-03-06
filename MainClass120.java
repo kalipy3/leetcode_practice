@@ -85,15 +85,16 @@ class Solution {
     }
 }
 
-//方法三
+//方法三 推荐
 class Solution {
     public int minimumTotal(List<List<Integer>> triangle) {
         int n = triangle.size();
         // dp[i][j] 表示从点 (i, j) 到底边的最小路径和。
-        int[][] dp = new int[n + 1][n + 1];
+        int[][] dp = new int[n + 1][n + 1];//是为了给最后一行的下一行初始化为0
         // 从三角形的最后一行开始递推。
         for (int i = n - 1; i >= 0; i--) {
             for (int j = 0; j <= i; j++) {
+            //for (int j = i; j >= 0; j--) {//也ok
                 dp[i][j] = Math.min(dp[i + 1][j], dp[i + 1][j + 1]) + triangle.get(i).get(j);
             }
         }

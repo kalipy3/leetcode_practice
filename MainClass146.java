@@ -59,7 +59,7 @@ class LRUCache {
             cache.remove(map.get(key));
         }else if(map.size()==cap){//若该节点不存在，但是cache已满
             Node last = cache.removeLast();
-            map.remove(last.key);
+            map.remove(last.key);//这里要定位node中的key，所以DoubleList中要保存key
         }
         cache.addFirst(n);
         map.put(key,n);

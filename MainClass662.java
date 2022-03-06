@@ -30,7 +30,7 @@ class AnnotatedNode {
     }
 }
 
-//官方题解 方法二 kalipy修改后的
+//官方题解 方法二 kalipy修改后的 推荐
 class Solution {
     int ans;
     List<Integer> left;
@@ -46,7 +46,7 @@ class Solution {
         if (depth == left.size()) {
             left.add(pos);
         }
-        ans = Math.max(ans, pos - left.get(depth) + 1);
+        ans = Math.max(ans, pos - left.get(depth) + 1);//这行代码前中后遍历顺序都ok
         dfs(root.left, depth + 1, 2 * pos);
         dfs(root.right, depth + 1, 2 * pos + 1);
     }

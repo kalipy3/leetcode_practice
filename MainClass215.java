@@ -1,8 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Random;
-
 /**
  * 快速排序
  */
@@ -94,36 +89,37 @@ class Solution {
     }
 }
 
-public class MainClass215 {
-    public static int[] stringToIntegerArray(String input) {
-        input = input.trim();
-        input = input.substring(1, input.length() - 1);
-        if (input.length() == 0) {
-            return new int[0];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//方法二 kalipy一次过
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        for (int i = 0; i < k; i++) {
+            pq.offer(nums[i]);
         }
 
-        String[] parts = input.split(",");
-        int[] output = new int[parts.length];
-        for(int index = 0; index < parts.length; index++) {
-            String part = parts[index].trim();
-            output[index] = Integer.parseInt(part);
+        for (int i = k; i < nums.length; i++) {
+            if (pq.peek() < nums[i]) {
+                pq.poll();
+                pq.offer(nums[i]);
+            }
         }
-        return output;
-    }
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-        while ((line = in.readLine()) != null) {
-            int[] nums = stringToIntegerArray(line);
-            line = in.readLine();
-            int k = Integer.parseInt(line);
-
-            int ret = new Solution().findKthLargest(nums, k);
-
-            String out = String.valueOf(ret);
-
-            System.out.print(out);
-        }
+        return pq.peek();
     }
 }

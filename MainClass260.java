@@ -36,6 +36,11 @@ class Solution {
         while ((div & ret) == 0) {
             div <<= 1;
         }
+        //int k = 1;
+        //while (true) {//不知道为什么这样会死循环
+        //    if ((ans & k) == 1) break;
+        //    k <<= 1;
+        //}
         int a = 0, b = 0;
         for (int n : nums) {
             if ((div & n) != 0) {
@@ -70,8 +75,8 @@ class Solution {
             } else {
                 b ^= nums[i];
             }
-        }
+            }
 
         return new int[]{a, b};
-    }
-}
+        }
+        }

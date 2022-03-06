@@ -24,28 +24,24 @@ class Solution {
     }
 }
 
-//kalipy一次过 写法二
+//kalipy一次过 写法二 送分题
 class Solution {
     public int[] sortedSquares(int[] nums) {
-        int N = nums.length;
-        int[] ans = new int[N];
+        int n = nums.length;
+        int tail = n - 1;
         int l = 0;
-        int r = N-1;
-        int j = N-1;
+        int r = n - 1;
+        int ans[] = new int[n];
         while (l <= r) {
-            if (nums[l]*nums[l] <= nums[r]*nums[r]) {
-                ans[j] = nums[r]*nums[r];
-                j--;
+            if (nums[l] * nums[l] < nums[r] * nums[r]) {
+                ans[tail--] = nums[r] * nums[r];
                 r--;
-            } else if (nums[l]*nums[l] > nums[r]*nums[r]) {
-                ans[j] = nums[l]*nums[l];
-                j--;
+            } else {
+                ans[tail--] = nums[l] * nums[l];
                 l++;
             }
-
         }
-        return ans;
 
+        return ans;
     }
 }
-

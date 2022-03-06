@@ -23,3 +23,26 @@ class Solution {
     }
 }
 
+//写法二 推荐
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        Arrays.sort(intervals , new Comparator<int[]>() {
+            public int compare(int[] intervals1, int[] intervals2) {
+                return intervals1[0] - intervals2[0];
+            }
+        });
+
+        List<int[]> ans = new ArrayList<>();
+        ans.add(new int[]{intervals[0][0], intervals[0][1]});
+        for (int i = 1; i < intervals.length; i++) {
+            if (ans.get(ans.size()-1)[1] < intervals[i][0]) {
+                ans.add(new int[]{intervals[i][0], intervals[i][1]});
+            } else {
+                ans.get(ans.size()-1)[1] = Math.max(ans.get(ans.size()-1)[1], intervals[i][1]);
+            }
+        }
+
+        return ans.toArray(new int[ans.size()][]);
+    }
+}
+

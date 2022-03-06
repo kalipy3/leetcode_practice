@@ -12,7 +12,8 @@ class Solution {
         for(int i = 0; i < res.length; i++){
             String s = res[i];
             if(s.equals(".") || s.equals("")) continue;
-            else if (s.equals("..")){
+            //else if (!queue.isEmpty() && str[i].equals("..")) {//error 这种写法会导致进入最后的else分支
+            else if (s.equals("..")){//ok
                 if(!queue.isEmpty()){
                     queue.pollLast();
                 }

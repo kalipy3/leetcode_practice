@@ -1,10 +1,6 @@
 两种方法都好理解
-
-
-//作者：jiang-hui-4
+//请先看这个题解的图解
 //链接：https://leetcode-cn.com/problems/sliding-window-maximum/solution/you-xian-dui-lie-zui-da-dui-dan-diao-dui-dbn9/
-//来源：力扣（LeetCode）
-//著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 //方法一
 public int[] maxSlidingWindow(int[] nums, int k) {
     int n = nums.length;

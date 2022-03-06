@@ -1,3 +1,6 @@
+推荐方法超
+
+
 //方法二
 //作者：windliang
 //链接：https://leetcode-cn.com/problems/gas-station/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--30/
@@ -31,6 +34,7 @@ class Solution {
 
 }
 
+//方法超 推荐！！！！
 //重点就两句话： 1、两个数组之差的总和必须大于等于0，否则不能完成绕行 2、 一个站的收益如果小于0，肯定不能作为起点；而连续的多个站也可以等效地看做一个站，如果其累积收益小于0，就跳过，寻找下一个。
 class Solution {
     public int canCompleteCircuit(int[] gas, int[] cost) {

@@ -59,6 +59,7 @@ class Solution {
                 }
             }
             ans.add(new LinkedList<Integer>(levelList));
+            //ans.add((List<Integer>)levelList);//也ok
             isOrderLeft = !isOrderLeft;
         }
 

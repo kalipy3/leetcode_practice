@@ -8,6 +8,7 @@
 //题目太简单了算不上hard。官方题解写的太啰嗦了。 根据题意分析只需要中序遍历找到，第一个升序顺序错乱最大值节点，和最后一个升序顺序错乱的最小值节点。然后交换两个节点val即可。
 //https://leetcode-cn.com/problems/recover-binary-search-tree/solution/san-chong-jie-fa-xiang-xi-tu-jie-99-hui-fu-er-cha-/
 
+//请直接看代码 送分题
 class Solution {
     TreeNode t1, t2, pre;
     public void recoverTree(TreeNode root) {

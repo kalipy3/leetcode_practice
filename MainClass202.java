@@ -1,29 +1,3 @@
-//kalipy写法
-class Solution {
-    Set<Integer> set = new HashSet<>();
-    public boolean isHappy(int n) {
-        int slow = n;
-        int fast = getSum(n);
-        while (slow != fast) {
-            slow = getSum(slow);
-            fast = getSum(fast);
-            fast = getSum(fast);
-        }
-
-        return 1 == slow;
-    }
-
-    public int getSum(int n) {
-        int res = 0;
-        while (n != 0) {
-            res += (n%10) * (n%10);
-            n /= 10;
-        }
-        return res;
-    }
-}
-
-
 //方法一 官方题解
 class Solution {
     public boolean isHappy(int n) {
@@ -48,57 +22,61 @@ class Solution {
     }
 }
 
-//方法二 官方题解
+//写法三
 class Solution {
+    public boolean isHappy(int n) {
 
-    public int getNext(int n) {
-        int totalSum = 0;
-        while (n > 0) {
-            int d = n % 10;
-            n = n / 10;
-            totalSum += d * d;
-        }
-        return totalSum;
+        int slow = n;
+        int fast = n;
+        do
+        {
+            slow = getNext(slow);
+            fast = getNext(getNext(fast));
+        } while (slow != fast);
+
+        return slow == 1;
     }
 
-    public boolean isHappy(int n) {
-        int slowRunner = n;
-        int fastRunner = getNext(n);
-        while (fastRunner != 1 && slowRunner != fastRunner) {
-            slowRunner = getNext(slowRunner);
-            fastRunner = getNext(getNext(fastRunner));
+    private int getNext(int n) {
+        int ans = 0;
+        
+        while (n != 0) {
+        int t = n % 10;
+        ans += t*t;
+        n = n / 10;
         }
-        return fastRunner == 1;
+
+
+        return ans;
     }
 }
 
-
-
-//方法二 写法二
+//写法四
 class Solution {
-    public:
-        int bitSquareSum(int n) {
-            int sum = 0;
-            while(n > 0)
-            {
-                int bit = n % 10;
-                sum += bit * bit;
-                n = n / 10;
-            }
-            return sum;
+    public boolean isHappy(int n) {
+
+        int slow = n;
+        //int fast = getNext(n);//也ok
+        int fast = getNext(getNext(n));
+        while (slow != fast) 
+        {
+            slow = getNext(slow);
+            fast = getNext(getNext(fast));
         }
 
-        bool isHappy(int n) {
-            int slow = n, fast = n;
-            do{
-                slow = bitSquareSum(slow);
-                fast = bitSquareSum(fast);
-                fast = bitSquareSum(fast);
-            }while(slow != fast);
+        return slow == 1;
+    }
 
-            return slow == 1;
+    private int getNext(int n) {
+        int ans = 0;
+        
+        while (n != 0) {
+        int t = n % 10;
+        ans += t*t;
+        n = n / 10;
         }
-};
 
 
-
+        return ans;
+    }
+}

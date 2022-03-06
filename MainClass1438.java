@@ -1,25 +1,4 @@
 //先看这个神仙题解和c++的代码  链接：https://leetcode-cn.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/solution/he-gua-de-shu-ju-jie-gou-hua-dong-chuang-v46j/
-/*
-class Solution {
-public:
-    int longestSubarray(vector<int>& nums, int limit) {
-        multiset<int> st;
-        int left = 0, right = 0;
-        int res = 0;
-        while (right < nums.size()) {
-            st.insert(nums[right]);
-            while (*st.rbegin() - *st.begin() > limit) {
-                st.erase(st.find(nums[left]));
-                left ++;
-            }
-            res = max(res, right - left + 1);
-            right ++;
-        }
-        return res;
-    }
-};
-
-*/
 
 
 //方法一 请直接看代码,直到看懂为止
@@ -32,7 +11,7 @@ class Solution {
         int left = 0;
         int right = 0;
         int ans = 0;
-        while (right < nums.length && left < nums.length) {
+        while (right < nums.length) {
             minQueue.add(nums[right]);
             maxQueue.add(nums[right]);
 
@@ -50,6 +29,38 @@ class Solution {
         return ans;
     }
 }
+
+//方法一 写法二
+class Solution {
+    public int longestSubarray(int[] nums, int limit) {
+
+        PriorityQueue<Integer> minQueue = new PriorityQueue<>(Comparator.naturalOrder());//root最小
+        PriorityQueue<Integer> maxQueue = new PriorityQueue<>(Comparator.reverseOrder());
+
+        int left = 0;
+        int right = 0;
+        int ans = 0;
+        while (right < nums.length) {
+            minQueue.add(nums[right]);
+            maxQueue.add(nums[right]);
+
+            if (maxQueue.peek() - minQueue.peek() <= limit) {
+                ans = Math.max(ans, right - left + 1);
+                right++;
+                //continue;
+            } else {
+
+            maxQueue.remove((Integer) nums[left]);
+            minQueue.remove((Integer) nums[left]);
+            left++;
+            right++;
+            }
+
+        }
+        return ans;
+    }
+}
+
 
 //方法二
 //显然，使用滑动窗口，维护当前窗口的的最大值和最小值是解决这个问题的关键。

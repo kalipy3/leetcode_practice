@@ -5,25 +5,25 @@
  * Distributed under terms of the MIT license.
  */
 //方法一 暴力破解 kalipy一遍过
-public int[] dailyTemperatures(int[] T) {
-    int length = T.length;
-    int[] result = new int[length];
-    for (int i = 0; i < length; i++) {
-        int current = T[i];
-        if (current < 100) {
-            for (int j = i + 1; j < length; j++) {
-                if (T[j] > current) {
-                    result[i] = j - i;
+class Solution {
+    public int[] dailyTemperatures(int[] temperatures) {
+        int n = temperatures.length;
+        int ans[] = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (temperatures[i] < temperatures[j]) {
+                    ans[i] = j - i;
                     break;
                 }
             }
         }
+
+        return ans;
     }
-    return result;
 }
 
-
-//方法二 单调栈
+//方法二 单调栈 送分题
 class Solution {
     public int[] dailyTemperatures(int[] temperatures) {
         int length = temperatures.length;

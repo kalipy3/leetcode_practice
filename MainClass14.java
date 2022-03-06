@@ -22,3 +22,26 @@ class Solution {
 }
 
 
+//kalipy一次过
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+
+        String ans = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            String cur = strs[i];
+            int p1 = 0;
+            int p2 = 0;
+            while (p1 < ans.length() && p2 < cur.length()) {
+                if (cur.charAt(p2) != ans.charAt(p1)) {
+                    break;
+                }
+                p2++;
+                p1++;
+            }
+            ans = ans.substring(0, p1);
+            //ans = ans.substring(0, p2);//也ok
+        }
+
+        return ans;
+    } 
+}

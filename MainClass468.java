@@ -27,7 +27,8 @@ class Solution {
 //官方题解 方法二
 class Solution {
     public String validateIPv4(String IP) {
-        String[] nums = IP.split("\\.", -1);
+        String[] nums = IP.split("\\.", -1);//ok
+        //String[] nums = IP.split("\\.");//error!!!!!
         for (String x : nums) {
             // Validate integer in range (0, 255):
             // 1. length of chunk is between 1 and 3

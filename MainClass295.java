@@ -6,6 +6,8 @@
  */
 //链接：https://leetcode-cn.com/problems/find-median-from-data-stream/solution/gong-shui-san-xie-jing-dian-shu-ju-jie-g-pqy8/
 //方法一 推荐
+//1 2 4 5
+//1 2 3 5 6
 class MedianFinder {
     PriorityQueue<Integer> l = new PriorityQueue<>((a,b)->b-a);
     PriorityQueue<Integer> r = new PriorityQueue<>((a,b)->a-b);

@@ -26,6 +26,9 @@ class Solution {
     }
 }
 
+//方法n
+请直接用240题的答案即可
+
 //官方题解 方法二
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {

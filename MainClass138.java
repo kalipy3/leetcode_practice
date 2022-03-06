@@ -146,3 +146,27 @@ class Solution {
 }
 
 
+//kalipy一次过
+class Solution {
+    public Node copyRandomList(Node head) {
+        if (head == null) return head;
+
+        HashMap<Node, Node> map = new HashMap<>();
+        Node cur = head;
+        while (cur != null) {
+            map.put(cur, new Node(cur.val));
+            cur = cur.next;
+        }
+
+        cur = head;
+        while (cur != null) {
+            Node oldN = cur;
+            map.get(oldN).next = map.get(oldN.next);
+            map.get(oldN).random = map.get(oldN.random);
+            cur = cur.next;
+        }
+
+        return map.get(head);
+
+    }
+}
