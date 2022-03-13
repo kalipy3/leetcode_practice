@@ -1,4 +1,4 @@
-//kalipy一次过
+//kalipy一次过 送分题
 class Solution {
     public boolean isBalanced(TreeNode root) {
         if (root == null) return true;

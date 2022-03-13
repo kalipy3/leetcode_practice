@@ -99,31 +99,31 @@ public int[] findDiagonalOrder(int[][] matrix) {
 }
 
 //方法三
-    public int[] findDiagonalOrder(int[][] mat) {
-        int m = mat.length,n = mat[0].length,k = 0;
-        int[] result = new int[m * n];
-        Map<Integer,List<Integer>> map = new HashMap<>();
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                List<Integer> integers;
-                if(map.containsKey(i + j)){
-                    integers = map.get(i + j);
-                }else{
-                    integers = new ArrayList<>();
-                }
-                integers.add(mat[i][j]);
-                map.put(i + j,integers);
+public int[] findDiagonalOrder(int[][] mat) {
+    int m = mat.length,n = mat[0].length,k = 0;
+    int[] result = new int[m * n];
+    Map<Integer,List<Integer>> map = new HashMap<>();
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            List<Integer> integers;
+            if(map.containsKey(i + j)){
+                integers = map.get(i + j);
+            }else{
+                integers = new ArrayList<>();
             }
+            integers.add(mat[i][j]);
+            map.put(i + j,integers);
         }
-        for (Map.Entry<Integer, List<Integer>> integerListEntry : map.entrySet()) {
-            int key = integerListEntry.getKey();
-            List<Integer> value = integerListEntry.getValue();
-            if(key % 2 == 0){ // 偶数倒序
-                Collections.reverse(value);
-            }
-            for (Integer integer : value) {
-                result[k++] = integer;
-            }
-        }
-        return result;
     }
+    for (Map.Entry<Integer, List<Integer>> integerListEntry : map.entrySet()) {
+        int key = integerListEntry.getKey();
+        List<Integer> value = integerListEntry.getValue();
+        if(key % 2 == 0){ // 偶数倒序
+            Collections.reverse(value);
+        }
+        for (Integer integer : value) {
+            result[k++] = integer;
+        }
+    }
+    return result;
+}

@@ -3,13 +3,14 @@
 //来源：力扣（LeetCode）
 //著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
+//送分题
 class Solution {
     public int candy(int[] ratings) {
         int n = ratings.length;
         int[] left = new int[n];
         for (int i = 0; i < n; i++) {
             if (i > 0 && ratings[i] > ratings[i - 1]) {
-                left[i] = left[i - 1] + 1;
+                left[i] = left[i - 1] + 1;//error: left[i] += 1;
             } else {
                 left[i] = 1;
             }

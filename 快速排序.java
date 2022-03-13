@@ -30,11 +30,11 @@ public class 快速排序
         int val = arr[low];
 
         while (low < high) {
-            while (low < high && arr[high] >= val)
+            while (low < high && arr[high] >= val)//所有小于val的被交换到左边
                 high--;
             arr[low] = arr[high];
 
-            while (low < high && arr[low] <= val)
+            while (low < high && arr[low] <= val)//所有大于val的被交换到右边
                 low++;
             arr[high] = arr[low];
         }

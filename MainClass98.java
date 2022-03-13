@@ -47,3 +47,28 @@ class Solution {
         return dfs(root.right);
     }
 }
+
+//kalipy一次过
+class Solution {
+    TreeNode pre = null;
+    boolean ans = true;
+    public boolean isValidBST(TreeNode root) {
+        dfs(root);
+
+        return ans;
+    }
+
+    private void dfs(TreeNode root) {
+        if (root == null) return;
+
+        dfs(root.left);
+
+        if (pre != null && root.val <= pre.val) {
+            ans = false;
+            return;
+        }
+        pre = root;
+
+        dfs(root.right);
+    }
+}

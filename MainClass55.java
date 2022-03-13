@@ -62,4 +62,18 @@ public:
 };
 
 
+//kalipy一次过 非常推荐 送分题
+//想象你是那个在格子上行走的小人，格子里面的数字代表“能量”，你需要“能量”才能继续行走。
+class Solution {
+    public boolean canJump(int[] nums) {
+        int cur = nums[0];//当前能量
+        for (int i = 1; i < nums.length; i++) {
+            cur--;//每跳一下能量减1
+            if (cur < 0) return false;
 
+            cur = Math.max(cur, nums[i]);//选取大的能量
+        }
+
+        return true;
+    }
+}

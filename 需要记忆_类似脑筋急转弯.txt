@@ -1,0 +1,141 @@
+需要记忆_类似脑筋急转弯.txt
+
+:Author: kalipy
+:Email: kalipy@debian
+:Date: 2022-03-11 15:05
+
+
+31
+
+56 sort写法注意 ans.toArray(new int[ans.size()][])写法注意
+
+470
+
+518(这个递推格式常用，记住dp[i] = dp[i] + dp[i-num[i]])
+**如果求组合数就是外层for循环遍历物品，内层for遍历背包**。
+**如果求排列数就是外层for遍历背包，内层for循环遍历物品**。
+
+
+24
+
+224(请经常回顾)
+
+72
+
+297
+String[] str_word = data.split(",");
+List<String> list_word = new LinkedList<String>(Arrays.asList(str_word));
+
+139(请经常回顾)
+
+151(请经常回顾)
+
+1143(请经常回顾)
+
+329(记忆化递归值得学习)
+
+114(注意那个易错点)
+
+map遍历的方式：
+    for (Map.Entry<Integer, List<Integer>> integerListEntry : map.entrySet()) {
+        int key = integerListEntry.getKey();
+        List<Integer> value = integerListEntry.getValue();
+    }
+
+
+剪纸offer36(请经常回顾)
+
+11
+
+224(请经常回顾)
+
+56
+
+560(请经常回顾)
+
+227(请经常回顾 推荐这类题都用逆波兰表达式)
+
+166(请经常回顾)
+
+StringBuilder sb: 有这样的方法sb.deleteCharAt(sb.length()-1);
+
+670(请经常回顾)
+
+50(请经常回顾)
+
+763(请多练几遍)
+
+421(脑筋急转弯)
+
+剪纸offer61 91(请经常回顾)
+
+169(候选人算法 背下来)
+
+287(脑筋急转弯)
+
+421(脑筋急转弯)
+
+16(多做几遍)
+
+57(请经常回顾)
+
+123(股票 请经常回顾 多练习)
+
+14(多练几遍)
+
+213(多练几遍 打家劫舍II)
+
+剪纸offer40(模板题 多练无数遍都ok 必须不加思考就写出来 面试时先问数据量大和数据量小，数据量大用堆，数据量小用快速选择)
+
+74
+
+347(多练几遍)
+PriorityQueue<int[]> queue = new PriorityQueue<int[]>(new Comparator<int[]>() {
+    public int compare(int[] m, int[] n) {
+        return m[1] - n[1];
+    }
+});
+
+456(模板题 直接开背 不要想那么多，考场不允许你思考)
+
+134(别想那么多 开背即可)
+
+剪纸offer45(别想太多，开背就是了，少年)
+String排序方法： Arrays.sort(strs, (x, y) -> (x + y).compareTo(y + x));
+
+445(送分题 偶尔看看 不然容易想复杂)
+
+974(请多练几遍)
+
+279(请经常回顾)
+
+239(请经常回顾 板子题)
+
+84/85(请经常回顾 版字题)
+        System.arraycopy(heights, 0, newHeights, 1, len);
+
+6(请多练几遍)
+
+28(多练几遍 有易错点)
+
+572(多练几遍 送分题)
+
+1044(超难题 当时国服只有6人做出来)
+
+263/264/313(丑数 模板题 记住即可 没什么好说的)
+
+204(素数相关 多练几遍)
+
+225(送分题 多练几遍 最好记住)
+
+55/45(多练几遍 跳跃游戏 送分题)
+
+47(价值很大)
+
+补充题14(阿拉伯数字转中文 请经常回顾)
+
+71(请多留意3个注意点)
+
+722(多练几遍)
+
+剪纸offer53_I/34

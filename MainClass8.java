@@ -94,6 +94,36 @@ class Solution {
     }
 }
 
+//kalipy一次过
+class Solution {
+    public int myAtoi(String s) {
+        int cur = 0;
+        while (cur < s.length() && s.charAt(cur) == ' ') cur++;
+
+        if (cur >= s.length()) return 0;
+
+        int sign = 1;
+        if (s.charAt(cur) == '-') {
+            sign = -1;
+            cur++;
+        } else if (s.charAt(cur) == '+') {
+            sign = 1;
+            cur++;
+        }
+
+        int digit = 0;
+        while (cur < s.length() && Character.isDigit(s.charAt(cur))) {
+            int t = digit * 10 + (s.charAt(cur) - '0');
+
+            if (t / 10 != digit) {
+                return sign == -1 ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+            }
+            digit = t;
+            cur++;
+        }
+        return digit*sign;
+    }
+}
 
 //方法二 正则
 https://leetcode-cn.com/problems/string-to-integer-atoi/solution/python-1xing-zheng-ze-biao-da-shi-by-knifezhu/

@@ -7,11 +7,10 @@ class Solution {
         if (needle.equals("")) return 0;
 
         //for (int i = 0; i + n2 <= n1; i++) {//也ok
-        for (int i = 0; i < n1-n2+1; i++) {
-            int p1 = i;
+        for (int i = 0; i < n1-n2+1; i++) {//注意这里
             int j = 0;
             for (j = 0; j < n2; j++) {
-                if (haystack.charAt(i+j) != (needle.charAt(j)))
+                if (haystack.charAt(i+j) != (needle.charAt(j)))//注意是i+j
                     break;
             }
             if (j == n2)

@@ -15,3 +15,27 @@ class Solution {
         return Math.max(L, R) + 1; // 返回该节点为根的子树的深度
     }
 }
+
+//kalipy一次过 送分题
+class Solution {
+    int ans = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+        if (root == null) return ans;
+
+        dfs(root);
+
+        return ans - 1;
+    }
+
+    private int dfs(TreeNode root) {
+        if (root == null) return 0;
+
+
+        int l = dfs(root.left);
+        int r = dfs(root.right);
+
+        ans = Math.max(ans, l + r + 1);
+
+        return Math.max(l, r) + 1;
+    }
+}

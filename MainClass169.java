@@ -32,7 +32,7 @@ class Solution {
     }
 }
 
-//方法三 类比消消乐 推荐
+//方法三 类比消消乐
 作者：gfu
 链接：https://leetcode-cn.com/problems/majority-element/solution/3chong-fang-fa-by-gfu-2/
 来源：力扣（LeetCode）
@@ -53,4 +53,24 @@ class Solution {
     }
 }
 
+
+//方法三 kalipy一次过 推荐
+class Solution {
+    public int majorityElement(int[] nums) {
+        int candi = nums[0];
+        int cnt = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (candi == nums[i]) {
+                cnt++;
+            } else {
+                cnt--;
+                if (cnt == 0) {
+                    candi = nums[i];
+                    cnt = 1;
+                }
+            }
+        }
+        return candi;
+    }
+}
 

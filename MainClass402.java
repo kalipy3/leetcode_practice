@@ -1,40 +1,10 @@
-//官方题解 先看官方题解
-class Solution {
-    public String removeKdigits(String num, int k) {
-        Deque<Character> deque = new LinkedList<Character>();
-        int length = num.length();
-        for (int i = 0; i < length; ++i) {
-            char digit = num.charAt(i);
-            while (!deque.isEmpty() && k > 0 && deque.peekLast() > digit) {
-                deque.pollLast();
-                k--;
-            }
-            deque.offerLast(digit);
-        }
-
-        for (int i = 0; i < k; ++i) {
-            deque.pollLast();
-        }
-
-        StringBuilder ret = new StringBuilder();
-        boolean leadingZero = true;
-        while (!deque.isEmpty()) {
-            char digit = deque.pollFirst();
-            if (leadingZero && digit == '0') {
-                continue;
-            }
-            leadingZero = false;
-            ret.append(digit);
-        }
-        return ret.length() == 0 ? "0" : ret.toString();
-    }
-}
-
+//官方题解 先看官方图解
 
 作者：xiao_ben_zhu
 链接：https://leetcode-cn.com/problems/remove-k-digits/solution/wei-tu-jie-dan-diao-zhan-dai-ma-jing-jian-402-yi-d/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+//推荐
 class Solution {
     public String removeKdigits(String num, int k) {
         Deque<Character> stack = new LinkedList<>();

@@ -23,3 +23,30 @@ class Solution {
     }
 }
 
+//kalipy一次过 送饭题
+class Solution {
+    int k;
+    int ans = 0;
+    public int kthLargest(TreeNode root, int k) {
+        if (root == null) return 0;
+        this.k = k;
+        dfs(root);
+
+        return ans;
+    }
+
+    private void dfs(TreeNode root) {
+        if (root == null) return;
+
+        dfs(root.right);
+
+        k--;
+        if (k == 0) {
+            ans = root.val;
+            return;
+        }
+
+        dfs(root.left);
+    }
+}
+

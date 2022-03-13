@@ -33,3 +33,36 @@ class Solution {
     }
 }
 
+//kalipy一次过
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int i = 0;
+        for (i = nums.length - 2; i >= 0; i--) {
+            if (nums[i] < nums[i+1]) {
+                break;
+            }
+        }
+        if (i >= 0) {
+            for (int j = nums.length - 1; j > i; j--) {
+                if (nums[i] < nums[j]) {
+                    int t = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = t;
+                    break;
+                }
+            }
+        }
+        revesere(nums, i + 1, nums.length - 1);
+
+    }
+
+    private void revesere(int[] nums, int l, int r) {
+        while (l < r) {
+            int t = nums[l];
+            nums[l] = nums[r];
+            nums[r] = t;
+            l++;
+            r--;
+        }
+    }
+}

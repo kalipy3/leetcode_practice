@@ -1,6 +1,36 @@
+//kalipy一次过 推荐写法
+class Solution {
+    boolean visited[];
+    List<Integer> list = new ArrayList();
+    List<List<Integer>> ans = new ArrayList<>();
+    public List<List<Integer>> permute(int[] nums) {
+        visited = new boolean[nums.length];
+
+
+        dfs(nums, 0);
+
+        return ans;
+    }
+
+    private void dfs(int[] nums, int idx) {
+        if (nums.length == idx) {
+            ans.add(new ArrayList(list));
+            return;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                list.add(nums[i]);
+                dfs(nums, idx + 1);
+                visited[i] = false;
+                list.remove(list.size()-1);
+            }
+        }
+    } 
+}
+
 //直接看官方题解视频即可
-
-
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -58,6 +88,5 @@ public class Solution {
         System.out.println(lists);
     }
 }
-
 
 

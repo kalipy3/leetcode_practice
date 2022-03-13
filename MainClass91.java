@@ -22,7 +22,7 @@
 //
 //    我们可以先求前i-1个字符的解码数，但前提条件是当前字符也可以解码（一个字符的话，只要不是0，都可以）
 //    还可以求前i-2个字符的解码数，但前提条件是当前字符和前一个字符构成的两个数字是有效的。
-//思路二
+//思路二 推荐
 public int numDecodings(String s) {
     int length = s.length();
     int[] dp = new int[length + 1];
@@ -37,6 +37,55 @@ public int numDecodings(String s) {
     }
     return dp[length];
 }
+
+//kalipy一次过 推荐
+class Solution {
+    public int numDecodings(String s) {
+        int n = s.length();
+        int dp[] = new int[n+1];
+
+        dp[0] = 1;
+        dp[1] = s.charAt(0) == '0' ? 0 : 1;
+        for (int i = 2; i <= n; i++) {
+            if (s.charAt(i-1) != '0') {
+                dp[i] = dp[i-1];
+            }
+            if (s.charAt(i-2) == '1' || (s.charAt(i-2) == '2' && s.charAt(i-1) <= '6' && s.charAt(i-1) >= '0'))
+                dp[i] += dp[i-2];
+        }
+
+        return dp[n];
+    }
+}
+
+//kalipy狂魔乱舞一次过
+class Solution {
+    public int numDecodings(String s) {
+        int n = s.length();
+        int dp[] = new int[n+1];
+
+        dp[0] = 1;
+        dp[1] = s.charAt(0) == '0' ? 0 : 1;
+        for (int i = 2; i <= n; i++) {
+            if (s.charAt(i-1) != '0') {//不以0结尾
+                if (s.charAt(i-2) == '1' || (s.charAt(i-2) == '2' && s.charAt(i-1) <= '6' && s.charAt(i-1) >= '0'))
+                    dp[i] = dp[i-1] + dp[i-2];
+                else {
+                    dp[i] = dp[i-1];
+                }
+            } else {//以0结尾
+                if (s.charAt(i-2) == '1' || (s.charAt(i-2) == '2' && s.charAt(i-1) <= '6' && s.charAt(i-1) >= '0'))
+                    dp[i] = dp[i-2];
+                else {
+                    dp[i] = 0;
+                }
+            }
+        }
+
+        return dp[n];
+    }
+}
+
 
 //思路三
 //作者：pris_bupt

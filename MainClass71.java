@@ -11,8 +11,8 @@ class Solution {
         String[] res = path.split("/");
         for(int i = 0; i < res.length; i++){
             String s = res[i];
-            if(s.equals(".") || s.equals("")) continue;
-            //else if (!queue.isEmpty() && str[i].equals("..")) {//error 这种写法会导致进入最后的else分支
+            if(s.equals(".") || s.equals("")) continue;//注意点333！！！s.equals("")不能少
+            //else if (!queue.isEmpty() && str[i].equals("..")) {//注意点111！！！！error 这种写法会导致进入最后的else分支
             else if (s.equals("..")){//ok
                 if(!queue.isEmpty()){
                     queue.pollLast();
@@ -30,7 +30,7 @@ class Solution {
             }
         }
         // 判空
-        return sb.toString().equals("") ? "/" : sb.toString();
+        return sb.toString().equals("") ? "/" : sb.toString();//注意点2！！！！！！
     }
 }
 

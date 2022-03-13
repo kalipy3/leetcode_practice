@@ -41,4 +41,23 @@ class Solution {
     }
 }
 
+//kalipy一次过
+class Solution {
+    public int[] dailyTemperatures(int[] temperatures) {
+        int[] ans = new int[temperatures.length];
 
+        int n = temperatures.length;
+        Deque<Integer> st = new LinkedList<>();
+        for (int i = 0; i < n; i++) {
+
+            while (!st.isEmpty() && temperatures[st.peek()] < temperatures[i]) {
+                int pos1 = st.pop();
+                ans[pos1] = i - pos1;
+            }
+
+            st.push(i);
+        }
+
+        return ans;
+    }
+}

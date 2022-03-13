@@ -4,8 +4,9 @@
 //方法一
 public int[] maxSlidingWindow(int[] nums, int k) {
     int n = nums.length;
-    //这里我们传入了一个比较器，当两者的值相同时，比较下标的位置，下标大的在前面。
+    //这里我们传入了一个比较器，当两者的值相同时，比较下标的位置，下标大(小也ok)的在前面。
     PriorityQueue<int[]> queue = new PriorityQueue<>((p1, p2) -> p1[0] != p2[0] ? p2[0] - p1[0] : p2[1] - p1[1]);
+  //PriorityQueue<int[]> queue = new PriorityQueue<>((p1, p2) -> p1[0] != p2[0] ? p2[0] - p1[0] : p1[1] - p2[1]);//也ok
     //初始化前K的元素到堆中
     for (int i = 0; i < k; i++) {
         queue.offer(new int[]{nums[i], i});
@@ -64,4 +65,66 @@ public int[] maxSlidingWindow(int[] nums, int k) {
 }
 
 
+//kalipy一次过 推荐
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int n = nums.length;
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {
+            public int compare(int[] a, int[] b) {
+                return b[0] - a[0];
+            }
+        });
 
+        int ans[] = new int[n - k + 1];
+        for (int i = 0; i < k; i++) {
+            pq.offer(new int[]{nums[i], i});
+        }
+        ans[0] = pq.peek()[0];
+        int cnt = 1;
+        for (int i = k; i < n; i++) {
+            pq.offer(new int[]{nums[i], i});
+            while (!pq.isEmpty() && pq.peek()[1] <= i - k) {
+                pq.poll();
+            }
+
+            ans[cnt++] = pq.peek()[0];//推荐ans[cnt++] 这种写法，不用思考
+        }
+
+        return ans;
+    }
+
+}
+
+//kalipy一次过 推荐
+class Solution {
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        int n = nums.length;
+        int ans[] = new int[n - k + 1];
+
+        Deque<Integer> dq = new LinkedList<>();
+        for (int i = 0; i < k; i++) {
+            while (!dq.isEmpty() && nums[i] >= nums[dq.peekLast()]) {
+                dq.pollLast();
+            }
+            dq.offerLast(i);
+        }
+        ans[0] = nums[dq.peekFirst()];
+
+        int cnt = 1;
+        for (int i = k; i < n; i++) {
+            while (!dq.isEmpty() && nums[i] >= nums[dq.peekLast()]) {
+                dq.pollLast();
+            }
+            dq.offerLast(i);
+
+            while (dq.peekFirst() <= i - k) {
+                dq.pollFirst();
+            }
+
+            ans[cnt++] = nums[dq.peekFirst()];
+        }
+
+        return ans;
+    }
+
+}

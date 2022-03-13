@@ -23,7 +23,7 @@ map:
 class Solution {
     public int[] findDiagonalOrder(List<List<Integer>> nums) {
         int len = 0;
-		Map<Integer,List<Integer>> map = new TreeMap<>();
+		Map<Integer,List<Integer>> map = new TreeMap<>();//推荐LinkedHashMap，速度快很多
 		for(int i = 0;i < nums.size();i++) {
 			len += nums.get(i).size(); // 获取最后要返回的数组的长度，即元素个数
 			for(int j = 0;j < nums.get(i).size();j++) {

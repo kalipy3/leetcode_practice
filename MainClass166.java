@@ -65,4 +65,42 @@ class Solution {
     }
 }
 
+//kalipy的 请找错！！我是一直找不出错误，md
+class Solution {
+    public String fractionToDecimal(int numerator, int denominator) {
+        StringBuilder sb = new StringBuilder();
 
+        long a = numerator;
+        long b = denominator;
+        int sign = 1;
+        if (a * b < 0) {
+            sign = -1;
+        } 
+        if (sign == -1) sb.append("-");//大概率是这里的问题
+        System.out.println(sb.toString());
+        a = Math.abs(numerator);
+        b = Math.abs(denominator);
+
+        long remaider = a % b;
+        if (remaider == 0) return sb.append(a/b).toString();
+
+        sb.append(a/b + "");
+        sb.append(".");
+        HashMap<Long, Integer> map = new HashMap<>();
+        map.put(remaider, sb.length());
+        while (remaider != 0) {
+            remaider *= 10;
+            sb.append(remaider / b);
+
+            remaider = remaider % b;
+            if (map.containsKey(remaider)) {
+                int idx = map.get(remaider);
+                return String.format("%s(%s)", sb.substring(0, idx), sb.substring(idx));
+            } else {
+                map.put(remaider, sb.length());
+            }
+        }
+
+        return sb.toString();
+    }
+}

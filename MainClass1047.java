@@ -17,3 +17,25 @@ class Solution {
     }
 }
 
+//写法一 kalipy一次过 送分题
+class Solution {
+    public String removeDuplicates(String s) {
+        Deque<Character> dq = new LinkedList<>();
+
+        for (int i = 0; i < s.length(); i++) {
+
+            if (!dq.isEmpty() && dq.peekLast() == s.charAt(i)) {
+                dq.pollLast();
+            } else {
+                dq.offerLast(s.charAt(i));
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        while (!dq.isEmpty()) {
+            sb.append(dq.pollFirst());
+        }
+
+        return sb.toString();
+    }
+}

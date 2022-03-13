@@ -30,3 +30,40 @@ class Solution {
     }
 }
 
+//kalipy一次过 推荐
+//中序遍历就不说了，比较简单。这里主要说说怎么构建双向链表。
+//    首先设置一个变量 pre , 记录当前中序遍历节点 cur 的前一个节点。
+//    连接节点 cur 和 pre : pre.right = cur; cur.left = pre。
+//    更新 cur 节点 : pre = cur。
+class Solution {
+    Node pre = null;
+    Node head = null;
+    public Node treeToDoublyList(Node root) {
+        if (root == null) return root;
+
+        dfs(root);
+        head.left = pre;
+        pre.right = head;
+
+        return head;
+    }
+
+    private void dfs(Node root) {
+        if (root == null) return;
+
+        if (pre == null) {
+            head = root;
+        }
+
+        dfs(root.left);
+
+        if (pre != null)
+            pre.right = root;
+
+        root.left = pre;
+        pre = root;
+
+        dfs(root.right);
+    }
+}
+

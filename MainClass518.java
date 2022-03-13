@@ -4,6 +4,23 @@
  *
  * Distributed under terms of the MIT license.
  */
+
+//请先看官方题解 推荐
+class Solution {
+    public int change(int amount, int[] coins) {
+        int[] dp = new int[amount + 1];
+        dp[0] = 1;
+        for (int coin : coins) {
+            for (int i = coin; i <= amount; i++) {
+                dp[i] += dp[i - coin];
+            }
+        }
+        return dp[amount];
+    }
+}
+
+
+
 //方法一 直接把39题代码复制过来，调用 超时
 class Solution {
     int ans = 0;

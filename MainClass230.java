@@ -11,6 +11,7 @@ class Solution {
 
     public void dfs(TreeNode root) {
         if (root == null) return;
+        //if (root == null || k < 0) return;//剪纸也ok
 
         dfs(root.left);
         k--;

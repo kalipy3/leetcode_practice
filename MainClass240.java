@@ -1,4 +1,4 @@
-//官方题解 方法一
+//官方题解 方法一 送分题
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         // start our "pointer" in the bottom-left

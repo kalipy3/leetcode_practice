@@ -57,4 +57,52 @@ class Solution {
     }
 }
 
+//kalipy写法 我是不知道为什么错了
+class Solution {
+    int cur = 0;
+    public String decodeString(String s) {
+        Deque<String> st = new LinkedList<>();
 
+        while (cur < s.length()) {
+            if (s.charAt(cur) >= '0' && s.charAt(cur) <= '9') {
+                String digit = getDigit(s);
+                st.offerLast(digit);
+            } else if (s.charAt(cur) == '[' || Character.isLetter(s.charAt(cur))) {
+                st.offerLast(s.charAt(cur) + "");
+                cur++;
+            } else {
+                cur++;
+                StringBuilder sub = new StringBuilder();
+                while (!"[".equals(st.peekLast())) {
+                    sub.append(st.pollLast());
+                }
+                sub = sub.reverse();
+
+                st.pollLast();
+                int digit = Integer.valueOf(st.pollLast());
+                StringBuilder sb = new StringBuilder();
+                while (digit > 0) {
+                    sb.append(sub);
+                    digit--;
+                }
+                st.offerLast(sb.toString());
+            }
+        }
+
+        StringBuilder ans = new StringBuilder();
+        while (!st.isEmpty()) {
+            ans.append(st.pollFirst());
+        }
+
+        return ans.toString();
+    }
+
+    private String getDigit(String str) {
+        int digit = 0;
+        while (Character.isDigit(str.charAt(cur))) {
+            digit = digit * 10 + (str.charAt(cur) - '0');
+            cur++;
+        }
+        return digit + "";
+    }
+}

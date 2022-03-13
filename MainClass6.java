@@ -5,13 +5,13 @@
 //nb,看上面题解的图，你可以看懂
 class Solution {
     public String convert(String s, int numRows) {
-        if(numRows < 2) return s;
+        if(numRows < 2) return s;//这句不能少
         List<StringBuilder> rows = new ArrayList<StringBuilder>();
         for(int i = 0; i < numRows; i++) rows.add(new StringBuilder());
         int i = 0, flag = -1;
         for(char c : s.toCharArray()) {
             rows.get(i).append(c);
-            if(i == 0 || i == numRows -1) flag = - flag;
+            if(i == 0 || i == numRows -1) flag = - flag;//根据这个if来写，不容易错，因为if的内容是必须这样写的,if的内容确定后，其它的就轻而易举
             i += flag;
         }
         StringBuilder res = new StringBuilder();

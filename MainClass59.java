@@ -1,6 +1,6 @@
 //请对比54题 请先直接看方法二和方法三的代码和注释 可以看懂 推荐方法二和方法三
 
-//方法二
+//方法二 推荐
 class Solution {
 public:
     //四边界法
@@ -26,7 +26,7 @@ public:
                 ans[bottom][i] = num;//从右到左填充下边界
                 num++;
             }
-            for(int i = bottom - 1; i > top; i--)
+            for(int i = bottom - 1; i > top; i--)//注意这里不取等号
             {
                 ans[i][left] = num;//从下到上填充左边界
                 num++;

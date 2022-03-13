@@ -6,7 +6,7 @@
 //来源：力扣（LeetCode）
 //著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
-//写法一
+//写法一 推荐
 //dp(i) 表示前 i 个数字的翻译方法数
 class Solution {
     public int translateNum(int num) {
@@ -22,6 +22,47 @@ class Solution {
                 dp[i] = dp[i-1];
         }
         return dp[s.length()];
+    }
+}
+
+//kalipy一次过 推荐
+class Solution {
+    public int translateNum(int num) {
+        char[] cs = (num + "").toCharArray();
+        int[] dp = new int[cs.length + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2; i <= cs.length; i++) {
+            if (cs[i-2] == '2' && cs[i-1] <= '5' && cs[i-1] >= '0' || (cs[i-2]=='1')) {
+                dp[i] = dp[i-2] + dp[i-1];
+            } else {
+
+                dp[i] = dp[i-1];
+            }
+        }
+
+        return dp[cs.length];
+    }
+}
+
+//kalipy 仿91题的 写法 也ok
+class Solution {
+    public int translateNum(int num) {
+        char[] cs = (num + "").toCharArray();
+        int[] dp = new int[cs.length + 1];
+        dp[0] = 1;
+        dp[1] = 1;
+        for (int i = 2; i <= cs.length; i++) {
+            //if () {
+            dp[i] = dp[i-1];
+            //}
+            if (cs[i-2] == '2' && cs[i-1] <= '5' && cs[i-1] >= '0' || (cs[i-2]=='1')) {
+                dp[i] += dp[i-2];
+
+            }
+        }
+
+        return dp[cs.length];
     }
 }
 
@@ -87,18 +128,18 @@ class Solution {
 //来源：力扣（LeetCode）
 //著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 class Solution {
-public:
-    int backtrack(string& s, int idx){
-        int n = s.size();
-        if(idx == n) return 1;
-        if(idx == n - 1 || s[idx] == '0' || s.substr(idx, 2) > "25")
-            return backtrack(s, idx + 1);
-        return backtrack(s, idx + 1) + backtrack(s, idx + 2);
-    }
-    int translateNum(int num) {
-        string s = to_string(num);
-        return backtrack(s, 0);
-    }
+    public:
+        int backtrack(string& s, int idx){
+            int n = s.size();
+            if(idx == n) return 1;
+            if(idx == n - 1 || s[idx] == '0' || s.substr(idx, 2) > "25")
+                return backtrack(s, idx + 1);
+            return backtrack(s, idx + 1) + backtrack(s, idx + 2);
+        }
+        int translateNum(int num) {
+            string s = to_string(num);
+            return backtrack(s, 0);
+        }
 };
 
 

@@ -5,6 +5,7 @@
  * Distributed under terms of the MIT license.
  */
 //官方题解 送分题
+//用 dp[i] 表示前 i 间房屋能偷窃到的最高总金额
 class Solution {
     public int rob(int[] nums) {
         if (nums == null || nums.length == 0) {

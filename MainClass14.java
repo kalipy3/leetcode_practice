@@ -22,7 +22,7 @@ class Solution {
 }
 
 
-//kalipy一次过
+//kalipy一次过 推荐
 class Solution {
     public String longestCommonPrefix(String[] strs) {
 

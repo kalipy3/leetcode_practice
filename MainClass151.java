@@ -107,7 +107,7 @@ class Solution {
         
         while (left <= right) {
             char c = s.charAt(left);
-            if ((word.length() != 0) && (c == ' ')) {
+            if ((word.length() != 0) && (c == ' ')) {//word.length()!=0是为了去掉中间括号
                 // 将单词 push 到队列的头部
                 d.offerFirst(word.toString());
                 word.setLength(0);

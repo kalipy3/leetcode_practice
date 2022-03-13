@@ -5,7 +5,7 @@
  * Distributed under terms of the MIT license.
  */
 //推荐方法二和方法三
-//方法一暴力破解
+//方法一暴力破解 草 暴力都能超33%
 public class Solution {
 
     public int maximumSwap(int num) {

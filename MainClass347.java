@@ -1,4 +1,4 @@
-//官方题解 方法一 小跟堆 优点，空间复杂度低
+//官方题解 方法一 小跟堆 优点，空间复杂度低 推荐
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> occurrences = new HashMap<Integer, Integer>();
@@ -31,7 +31,7 @@ class Solution {
     }
 }
 
-//方法二 大根堆 缺点，空间复杂度高
+//方法二 大根堆 缺点，空间复杂度高 面试时这种方法铁定挂，一定要用节省内存的堆！！！！！！！！
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -48,3 +48,47 @@ class Solution {
     }
 }
 
+
+//kalipy一次过
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        PriorityQueue<int[]> pq = new PriorityQueue<>(new Comparator<int[]>() {
+            public int compare(int[] a, int[]b) {
+                return a[1] - b[1];
+            }
+        });
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (!map.containsKey(nums[i])) {
+                map.put(nums[i], 1);
+            } else {
+                map.put(nums[i], map.get(nums[i]) + 1);
+            }
+        }
+
+        int cnt = 0;
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            int key = entry.getKey();
+            int val = entry.getValue();
+
+            if (cnt < k) {
+                pq.offer(new int[]{key, val});
+                cnt++;
+            } else {
+                if (pq.peek()[1] < val) {
+                    pq.poll();
+                    pq.offer(new int[]{key, val});
+                }
+            }
+        }
+
+        int ans[] = new int[k];
+
+        for (int i = 0; i < k; i++) {
+            ans[i] = pq.poll()[0];
+        }
+
+        return ans;
+    }
+}

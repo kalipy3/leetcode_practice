@@ -32,3 +32,29 @@ class Solution {
         dept--;
     }
 }
+
+//kalipy一次过
+
+class Solution {
+    int ans = 0;
+
+    public int maxDepth(Node root) {
+        if (root == null) return 0;
+
+        dfs(root, 0);
+
+        return ans;    
+    }
+
+    private void dfs(Node root, int dept) {
+        if (root == null) return;
+        dept++;
+        if (root.children.size() == 0) {
+            ans = Math.max(ans, dept);
+        }
+
+        for (Node n: root.children) {
+            dfs(n, dept);
+        }
+    }
+}

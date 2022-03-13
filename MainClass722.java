@@ -107,7 +107,7 @@ class Solution {
             if (j == -1) break;
             char ch = sb.charAt(j + 1);
             if (ch == '/') {
-                sb.delete(j, sb.indexOf("\n", j + 2));
+                sb.delete(j, sb.indexOf("\n", j + 2));//注意！！！换行符要保留
                 i = j;
             } else if (ch == '*') {
                 sb.delete(j, sb.indexOf("*/", j + 2) + 2);
@@ -124,4 +124,32 @@ class Solution {
     }
 }
 
+//kalipy的 不知道哪里的bug
+class Solution {
+    public List<String> removeComments(String[] source) {
+        String str = String.join("\n", source) + '\n';
 
+        for (int i = 0; i < str.length()-1; i++) {
+            if (str.charAt(i) == '/') {
+                if (str.charAt(i+1) == '/') {
+                    int idx = str.indexOf('\n', i+2);
+                    str = str.substring(0, i) + str.substring(idx);//换行符要保留
+                } else if (str.charAt(i+1) == '*') {
+                    int idx = str.indexOf("*/", i+2);
+                    str = str.substring(0, i) + str.substring(idx+2);
+                }
+            }
+        }
+
+        String[] sb = str.split("\n");
+
+        List<String> ans = new ArrayList<>();
+        for (String s : sb) {
+            if (!s.equals("")) {
+                ans.add(s);
+            }
+        }
+
+        return ans;
+    }
+}

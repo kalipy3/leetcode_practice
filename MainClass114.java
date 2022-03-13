@@ -24,6 +24,32 @@ public void flatten(TreeNode root) {
         }
     }
 }
+
+//kalipy一次过 送分题
+class Solution {
+    public void flatten(TreeNode root) {
+        if (root == null) return;
+        while (root != null) {
+
+            TreeNode l = root.left;
+            TreeNode r = root.right;
+            TreeNode p = l;
+            if (l != null) {//易错点：这个if不能少
+                while (p.right != null) {
+                    p = p.right;
+                }
+                p.right = r;
+                root.left = null;
+                root.right = l;
+
+                root = root.right;
+            } else {
+                root = root.right;
+            }
+        }
+    }
+}
+
 //官方题解 方法一
 class Solution {
     public void flatten(TreeNode root) {
@@ -45,8 +71,6 @@ class Solution {
         }
     }
 }
-
-
 
 
 

@@ -60,4 +60,36 @@ public class Solution {
     }
 }
 
+//kalipy一次过
+class Solution {
+    List<List<Integer>> ans = new ArrayList<>();
+    List<Integer> list = new ArrayList<>();
+    boolean used[];
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        used = new boolean[nums.length];
+        Arrays.sort(nums);
 
+        dfs(nums, 0);
+
+        return ans;
+    }
+
+    private void dfs(int[] nums, int idx) {
+        if (nums.length == idx) {
+            ans.add(new ArrayList<>(list));
+            return;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            if (i > 0 && nums[i] == nums[i-1] && !used[i-1]) continue;
+            if (!used[i]) {
+
+                used[i] = true;
+                list.add(nums[i]);
+                dfs(nums, idx + 1);
+                used[i] = false;
+                list.remove(list.size() - 1);
+            }
+        }
+    }
+}
