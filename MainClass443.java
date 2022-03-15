@@ -24,7 +24,7 @@ class Solution {
     }
 }
 
-//写法三 推荐 不易错
+//写法三 推荐 不易错 强烈推荐
 public int compress(char[] chars) {
     StringBuilder sb = new StringBuilder();
     int l = 0;
@@ -46,4 +46,46 @@ public int compress(char[] chars) {
         chars[i] = s.charAt(i);
     }
     return s.length();
+}
+
+//kalipy 错误写法 请看测试用例
+/*
+输入：
+["a","a","a","b","b","a","a"]
+输出：
+["a","5","b","2"]
+预期结果：
+["a","3","b","2","a","2"]
+*/
+class Solution {
+    public int compress(char[] chars) {
+        StringBuilder sb = new StringBuilder();
+
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (char c : chars) {
+            map.put(c, map.getOrDefault(c, 0) + 1);
+        }
+
+        int idx = 0;
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            char key = entry.getKey();
+            int val = entry.getValue();
+            sb.append(key);
+            if (val > 1) {
+                StringBuilder sub = new StringBuilder();
+                int tIdx = 0;
+                while (val != 0) {
+                    sub.append(val % 10);
+                    val /= 10;
+                }
+                sb.append(sub.reverse());
+            }
+        }
+
+        String s = sb.toString();
+        for (int i = 0; i < s.length(); i++) {
+            chars[i] = s.charAt(i);
+        }
+        return s.length();
+    }
 }

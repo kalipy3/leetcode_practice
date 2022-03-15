@@ -41,3 +41,21 @@ class Solution {
     }
 }
 
+//kalipy一次过 送分题
+class Solution {
+    public int reverse(int x) {
+
+        int digit = 0;
+        int pre = 0;
+        while (x != 0) {
+            pre = digit;
+            digit = digit * 10 + x % 10;
+
+            if (digit / 10 != pre) return 0;
+
+            x /= 10;
+        }
+
+        return digit;
+    }
+}

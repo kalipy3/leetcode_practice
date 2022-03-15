@@ -45,3 +45,24 @@ class Solution {
         return ans;
     }
 }
+
+//kalipy一次过 送分题
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int ans[] = new int[nums.length];
+
+        int tail = nums.length - 1;
+        int l = 0;
+        int r = nums.length - 1;
+        while (l <= r) {
+            ans[tail--] = Math.max(nums[l]*nums[l], nums[r]*nums[r]);
+            if (nums[l]*nums[l] < nums[r]*nums[r]) {
+                r--;
+            } else {
+                l++;
+            }
+        }
+
+        return ans;
+    }
+}

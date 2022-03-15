@@ -5,26 +5,6 @@
  * Distributed under terms of the MIT license.
  */
 
-//kalipy一次过
-class Solution {
-    public int findLengthOfLCIS(int[] nums) {
-        int[] dp = new int[nums.length];
-
-        int ans = 1;
-        dp[0] = 1;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] > nums[i-1]) {
-                dp[i] = dp[i-1] + 1;
-            } else {
-                dp[i] = 1;
-            }
-            ans = Math.max(ans, dp[i]);
-        }
-
-        return ans;
-    }
-}
-
 //方法二
 class Solution {
     public int findLengthOfLCIS(int[] nums) {
@@ -62,3 +42,43 @@ class Solution {
 }
 
 
+//kalipy一次过
+class Solution {
+    public int findLengthOfLCIS(int[] nums) {
+        int[] dp = new int[nums.length];
+
+        int ans = 1;
+        dp[0] = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > nums[i-1]) {
+                dp[i] = dp[i-1] + 1;
+            } else {
+                dp[i] = 1;
+            }
+            ans = Math.max(ans, dp[i]);
+        }
+
+        return ans;
+    }
+}
+
+//kalipy一次过 推荐！！比dp快很多
+class Solution {
+    public int findLengthOfLCIS(int[] nums) {
+
+        int ans = 1;
+
+        int l = 0;
+        int r = 0;
+        while (r < nums.length) {
+            if (r >= 1 && nums[r] <= nums[r-1]) {
+                l = r;
+            }
+
+            ans = Math.max(ans, r - l + 1);
+            r++;
+        }
+
+        return ans;
+    }
+}

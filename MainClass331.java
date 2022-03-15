@@ -29,7 +29,28 @@ public static boolean isValidSerialization(String s) {
     return stack.size() == 1 && "#".equals(stack.peek());
 }
 
-// 第一种解法
+//写法二 推荐
+class Solution {
+    public boolean isValidSerialization(String preorder) {
+        String str[] = preorder.split(",");
+        
+        Stack<String> st = new Stack<>();
+        for(String s : str){
+            if (s.equals("#")) {
+                while (!st.isEmpty() && "#".equals(st.peek())) {
+                    st.pop();
+                    if (st.isEmpty()) return false;
+                    st.pop();
+                } 
+            }
+            st.push(s);
+        }
+
+        return st.size() == 1 && "#".equals(st.peek());
+    }
+}
+
+// 第一种解法 推荐
 class Solution {
     public boolean isValidSerialization(String preorder) {
         LinkedList<String> stack = new LinkedList<>();

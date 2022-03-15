@@ -125,3 +125,23 @@ class Solution {
         return false;
     }
 }
+
+//kalipy一次过
+class Solution {
+    public boolean checkSubarraySum(int[] nums, int k) {
+        boolean ans = false;
+        if (nums.length <= 1) return false;
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        //map.put(-1, 1);//写不写都ok
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            if (map.containsKey(sum % k)) return true;
+
+            map.put((sum - nums[i]) % k, 1);
+        }
+
+        return ans;
+    }
+}

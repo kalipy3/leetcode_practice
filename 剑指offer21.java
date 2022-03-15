@@ -45,7 +45,7 @@ class Solution {
 }
 
 
-//方法二 官方题解
+//方法二 官方题解 推荐
 public int[] exchange1(int[] nums) {
     if(nums.length < 2) return nums;
     int l = 0;

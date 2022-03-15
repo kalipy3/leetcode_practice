@@ -33,3 +33,42 @@ class Solution {
 
 
 
+//写法二
+public int findMaxLength(int[] nums) {
+    int res = 0, sum = 0;
+    for (int i = 0; i < nums.length; i++) {
+        if (nums[i] == 0) {
+            nums[i] = -1;
+        }
+    }
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        sum += nums[i];
+        if (sum == 0 && i > res) {
+            res = i + 1;
+        }
+        if (map.containsKey(sum)) {
+            res = Math.max(i - map.get(sum), res);
+        } else {
+            map.put(sum, i);
+        }
+    }
+    return res;
+}
+
+//写法三
+//sum == 0的特殊情况 直接 if(sum == 0) {res = i + 1; continue;}更好，i+1一定是最大的。
+//还有一个解决方案就是 map初始化一个 (0 ，-1) 就可以不用处理特殊情况了
+public int findMaxLength(int[] nums) {
+    for (int i = 0; i < nums.length; i++) if (nums[i] == 0) nums[i] = -1;
+    Map<Integer, Integer> map = new HashMap<>();
+    map.put(0, -1);//拿[-1,1]带进去过一遍你就知道为什么了
+    int sum = 0, res = 0;
+    for (int i = 0; i < nums.length; i++) {
+        sum += nums[i];
+        if (map.containsKey(sum)) res = Math.max(res, i - map.get(sum));
+        else map.put(sum, i);
+    }
+    return res;
+}
+

@@ -33,3 +33,27 @@ class Solution {
 }
 
 
+//kalipy一次过
+class Solution {
+    public int longestSubarray(int[] nums) {
+        int l = 0;
+        int r = 0;
+        int ans = 0;
+        int idx = 0;
+        while (idx < nums.length) {
+            if (nums[idx] == 0) {
+                l = r;
+                r = 0;
+                idx++;
+            } else {
+                r++;
+                ans = Math.max(ans, r + l);
+                idx++;
+            }
+
+
+        }
+
+        return ans == nums.length ? ans - 1 : ans;
+    }
+}

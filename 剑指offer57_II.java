@@ -75,3 +75,70 @@ public int[][] findContinuousSequence(int target) {
     return res.toArray(new int[res.size()][]);
 }
 
+//kalipy一次过 写法一 推荐
+class Solution {
+    public int[][] findContinuousSequence(int target) {
+        int l = 1;
+        int r = 1;
+        int sum = 0;
+        List<int[]> ans = new ArrayList<>();
+
+        while (r < target) {
+            if (sum == target) {
+                int t[] = new int[r - l];
+                int idx = 0;
+                for (int i = l; i < r; i++) {
+                    t[idx++] = i;
+                }
+                ans.add(t);
+
+                sum -= l;
+                l++;
+            } else if (sum > target) {
+                sum -= l;
+                l++;
+            } else {
+                sum += r;
+                r++;
+            }
+        }
+
+        return ans.toArray(new int[ans.size()][]);
+    }
+}
+
+//1 2 3 4 5 6 7 8
+
+
+//kalipy一次过 写法二 推荐
+class Solution {
+    public int[][] findContinuousSequence(int target) {
+        int l = 1;
+        int r = 1;
+        int sum = 1;
+        List<int[]> ans = new ArrayList<>();
+
+        while (r < target) {
+            if (sum == target) {
+                int t[] = new int[r - l + 1];
+                int idx = 0;
+                for (int i = l; i <= r; i++) {
+                    t[idx++] = i;
+                }
+                ans.add(t);
+
+                sum -= l;
+                l++;
+            } else if (sum > target) {
+                sum -= l;
+                l++;
+            } else {
+
+                r++;
+                sum += r;
+            }
+        }
+
+        return ans.toArray(new int[ans.size()][]);
+    }
+}

@@ -65,3 +65,53 @@ class MyCircularQueue {
 }
 
 
+
+//kalipy一次过 超级送分题
+class MyCircularQueue {
+    int capacity;
+    int count;
+    int head;
+    int queue[];
+    public MyCircularQueue(int k) {
+        this.capacity = k;
+        this.queue = new int[k];
+    }
+
+    public boolean enQueue(int value) {
+        if (count == capacity) return false;
+
+        queue[(head + count) % capacity] = value;
+        count++;
+
+        return true;
+    }
+
+    public boolean deQueue() {
+        if (count == 0) return false;
+
+        head = (head + 1) % capacity;
+        count--;
+
+        return true;
+    }
+
+    public int Front() {
+        if (count == 0) return -1;
+
+        return queue[head % capacity];
+    }
+
+    public int Rear() {
+        if (count == 0) return -1;
+
+        return queue[(head + count - 1) % capacity];
+    }
+
+    public boolean isEmpty() {
+        return count == 0;
+    }
+
+    public boolean isFull() {
+        return count == capacity;
+    }
+}

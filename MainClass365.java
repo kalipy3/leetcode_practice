@@ -10,7 +10,7 @@ class Solution {
         if (x + y < z) {
             return false;
         }
-        if (x == 0 || y == 0) {
+        if (x == 0 || y == 0) {//不加这个if判断也ok
             return z == 0 || x + y == z;
         }
         return z % gcd(x, y) == 0;

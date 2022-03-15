@@ -91,6 +91,7 @@ class Solution {
                 if (nums[left] == queMin.peekFirst()) {
                     queMin.pollFirst();
                 }
+                //else if (nums[left] == queMax.peekFirst()) {//也ok
                 if (nums[left] == queMax.peekFirst()) {
                     queMax.pollFirst();
                 }

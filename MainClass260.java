@@ -69,7 +69,7 @@ class Solution {
 
         int a = 0, b = 0;
         for (int i = 0; i < nums.length; i++) {
-            //if ((p&nums[i]) == 1) {
+            //if ((p&nums[i]) == 1) {//极其易错点，粗心后还极不容易找出错误！！！！！！！！！！
             if ((p&nums[i]) != 0) {
                 a ^= nums[i];
             } else {
@@ -80,3 +80,40 @@ class Solution {
         return new int[]{a, b};
         }
         }
+
+
+//kalipy一次过
+class Solution {
+    public int[] singleNumber(int[] nums) {
+        int ans = 0;
+        for (int i = 0; i < nums.length; i++) {
+            ans ^= nums[i];
+        }
+
+        int k = 1;
+        while ((ans & k) == 0) {
+            
+            k <<= 1;
+        }
+
+                int a = 0, b = 0;
+        for (int n : nums) {
+            //if ((k & n) == 1) {极其易错点，粗心后还极不容易找出错误！！！！！！！！！！请用3^5手动运算一下你就知道哪错了
+            if ((k & n) != 0) {
+                a ^= n;
+            } else {
+                b ^= n;
+            }
+        }
+        return new int[]{a, b};
+
+    }
+}
+
+//3 ^ 5
+//011
+//101
+
+//110
+
+

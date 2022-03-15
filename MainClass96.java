@@ -17,7 +17,7 @@ class Solution {
     }
 }
 
-//方法二
+//方法二 推荐 比较直观
 public int numTrees(int n) {
     if (n == 1 || n == 0)
         return 1;

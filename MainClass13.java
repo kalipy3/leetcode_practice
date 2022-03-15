@@ -5,6 +5,8 @@
  * Distributed under terms of the MIT license.
  */
 
+//务必两种方法都掌握
+
 //方法一
 class Solution {
     public int romanToInt(String s) {

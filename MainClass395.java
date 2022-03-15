@@ -1,11 +1,9 @@
-//先看官方题解的文字解说，然后直接看代码
-
-
+//先看题解的文字解说，然后直接看代码
 作者：fuxuemingzhu
 链接：https://leetcode-cn.com/problems/longest-substring-with-at-least-k-repeating-characters/solution/jie-ben-ti-bang-zhu-da-jia-li-jie-di-gui-obla/
 来源：力扣（LeetCode）
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-//写法一
+//写法一 
 class Solution {
     public int longestSubstring(String s, int k) {
         if (s.length() < k) return 0;
@@ -26,7 +24,7 @@ class Solution {
     }
 }
 
-//写法二
+//写法二 推荐
 class Solution {
     public int longestSubstring(String s, int k) {
         if(s.length() < k)

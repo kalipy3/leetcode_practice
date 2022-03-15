@@ -28,8 +28,8 @@ public class Solution {
 
         // 开始 01背包
         for(int i = 0; i < nums.length; i++) {
-            for(int j = target; j >= nums[i]; j--) { // 每一个元素一定是不可重复放入，所以从大到小遍历
-                dp[j] = Math.max(dp[j], dp[j - nums[i]] + nums[i]);
+            for(int j = target; j >= nums[i]; j--) { // 每一个元素一定是不可重复放入，所以从大到小遍历；j>=num[i]是根据20line的dp[j-num[i]]的index>=0来的！！
+                dp[j] = Math.max(dp[j], dp[j - nums[i]] + nums[i]);//20line
             }
         }
         // 集合中的元素正好可以凑成总和target

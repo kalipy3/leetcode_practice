@@ -1,7 +1,6 @@
-//kalipy 一次过
+//kalipy 一次过 推荐 可以避坑！！！
 class Solution {
     int ans = Integer.MAX_VALUE;
-    int dept = 0;
     public int minDepth(TreeNode root) {
         if (root == null) return 0;
         dfs(root, dept);

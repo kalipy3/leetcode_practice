@@ -31,12 +31,13 @@ class Solution {
 }
 
 //写法二 ok
-
+//请直接看官方题解 送分题
 class Solution {
     public int findMinArrowShots(int[][] points) {
         if (points.length == 0) {
             return 0;
         }
+        //Arrays.sort(points, (o1, o2) -> Integer.compare(o1[0], o2[0]));//也ok
         Arrays.sort(points, new Comparator<int[]>() {
             public int compare(int[] point1, int[] point2) {
                 if (point1[1] > point2[1]) {
@@ -59,4 +60,3 @@ class Solution {
         return ans;
     }
 }
-

@@ -97,3 +97,27 @@ class Solution {
         return res;
     }
 }
+
+//kalipy一次过 推荐
+class Solution {
+    List<Integer> ans = new ArrayList<>();
+    public List<Integer> lexicalOrder(int n) {
+
+
+        for (int i = 1; i <= 9; i++) {
+            dfs(n, i);
+        }
+        return ans;
+    }
+
+    private void dfs(int n, int idx) {
+        if (idx > n) return;
+
+        ans.add(idx);
+
+        for (int i = 0; i <= 9; i++) {
+            dfs(n, idx * 10 + i);
+        }
+    }
+}
+
