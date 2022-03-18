@@ -24,6 +24,18 @@ class Solution {
     }
 }
 
+//kalipy 不推荐
+public int countOnes2(int x) {
+    int res = 0;
+    while (x != 0) {
+        if ((x&1) == 1) {
+            res++;
+        }
+        x = (x>>>1);
+    }
+    return res;
+}
+
 
 //方法二 推荐
 //链接：https://leetcode-cn.com/problems/counting-bits/solution/hen-qing-xi-de-si-lu-by-duadua/

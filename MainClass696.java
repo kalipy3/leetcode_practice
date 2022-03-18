@@ -27,7 +27,7 @@ class Solution {
     }
 }
 
-//方法二 官方题解
+//方法二 官方题解 推荐
 class Solution {
     public int countBinarySubstrings(String s) {
         int ptr = 0, n = s.length(), last = 0, ans = 0;

@@ -5,7 +5,7 @@
  * Distributed under terms of the MIT license.
  */
 链接：https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/solution/gong-shui-san-xie-yi-ti-shuang-jie-jin-z-d93o/
-//方法一
+//方法一 不推荐
 class Solution {
     public String toHex(int _num) {
         if (_num == 0) return "0";

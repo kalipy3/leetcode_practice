@@ -24,4 +24,23 @@ class Solution {
     }
 }
 
+//kalipy一次过
+class Solution {
+    public int singleNumber(int[] nums) {
+        int cnt[] = new int[32];
+        for (int num : nums) {
+            for (int i = 0; i < 32; i++) {
+                cnt[i] += num & 1;
+                num >>>= 1;
+            }
+        }
 
+        int ans = 0;
+        for (int i = 31; i >=0; i--) {
+            ans <<= 1;//这句话必须在前面
+            ans |= (cnt[i] % 3);
+        }
+
+        return ans;
+    }
+}

@@ -4,6 +4,21 @@
  *
  * Distributed under terms of the MIT license.
  */
+
+/* 推荐先看这个题解
+链接：https://leetcode-cn.com/problems/coin-lcci/solution/gei-da-jia-kan-dian-shen-qi-de-dong-xi-pai-lie-yu-/
+const int mod = 1000000007;
+vector<int> dp(n+1, 1);
+for(int j:vector<int>{5,10,25}){
+    for(int i=1; i<=n; i++){
+        if(i>=j){
+            dp[i] = (dp[i] + dp[i-j])%mod;
+        }
+    }
+}
+return dp[n];
+
+*/
 //链接：https://leetcode-cn.com/problems/coin-lcci/solution/java-wan-quan-bei-bao-xiang-xi-ti-jie-yu-yi-bu-bu-/
 class Solution {
     /**
@@ -49,5 +64,4 @@ class Solution {
         return dp[n];
     }
 }
-
 

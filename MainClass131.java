@@ -67,4 +67,48 @@ public class Solution {
     }
 }
 
-
+/* 写法二
+class Solution {
+public:
+    vector<vector<string>>result;
+    vector<string>temp;
+    
+    bool isPalindrome(string s)
+    {
+        int i=0,j=s.size()-1;
+        while(i<j)
+        {
+            if(s[i]!=s[j])
+                return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+    
+    void recursion(string s, int a, int b)
+    {
+        //到字符串末尾了，将本次结果记录下来
+        if(a > b)
+        {
+            result.push_back(temp);
+            return;
+        }
+        //从index为a开始截取长度为1,2,3...的子串进行验证，成功则用剩下的部分递归。
+        for(int i = 1; i<=b-a+1;i++)
+        {
+            if(isPalindrome(s.substr(a,i)))
+            {
+                temp.push_back(s.substr(a,i));
+                recursion(s,a+i,b);
+                temp.pop_back();
+            }
+        }
+    }
+    
+    vector<vector<string>> partition(string s) {
+        recursion(s,0,s.size()-1);
+        return result;
+    }
+};
+*/

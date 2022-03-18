@@ -20,6 +20,7 @@ public List<Integer> findSubstring(String s, String[] words) {
         allWords.put(w, value + 1);
     }
     //遍历所有子串
+    //for (int i = 0; i <= s.length() - wordNum * wordLen; i++) {//推荐写法
     for (int i = 0; i < s.length() - wordNum * wordLen + 1; i++) {
         //HashMap2 存当前扫描的字符串含有的单词
         HashMap<String, Integer> hasWords = new HashMap<String, Integer>();

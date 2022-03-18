@@ -5,19 +5,22 @@
  * Distributed under terms of the MIT license.
  */
 
-//官方题解 方法一
+//方法一 kalipy一次过
 class Solution {
     public int[] printNumbers(int n) {
-        int end = (int)Math.pow(10, n) - 1;
-        int[] res = new int[end];
-        for(int i = 0; i < end; i++)
-            res[i] = i + 1;
-        return res;
+        int len = (int)Math.pow(10, n);
+        int ans[] = new int[len-1];
+
+        for (int i = 1; i < len; i++) {
+            ans[i-1] = i;
+        }
+
+        return ans;
     }
 }
 
 //两个写法都很好 值得多看几遍
-//写法一 官方题解
+//方法二 写法一 官方题解
 class Solution {
     int[] res;
     int nine = 0, count = 0, start, n;

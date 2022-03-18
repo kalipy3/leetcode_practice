@@ -74,3 +74,35 @@ public Node connect(Node root) {
     return root;
 }
 
+//kalipy一次过
+class Solution {
+    public Node connect(Node root) {
+        Queue<Node> que = new LinkedList<>();
+        if(root != null)
+            que.offer(root);
+
+
+        while(!que.isEmpty()){
+            // 当前层队列大小
+            int size = que.size();
+            //当前层指针连接
+            for (int i = 0; i < size; i++) {
+                // 队头元素
+                Node node = que.poll();
+
+                // 未到当前层最后一个元素时 指向右边元素 否则指向null
+                if(size - 2 >= i)
+                    node.next = que.peek();
+                else
+                    node.next = null;
+
+                // 非空孩子结点存入队列
+                if(node.left != null)
+                    que.offer(node.left);
+                if(node.right != null)
+                    que.offer(node.right);
+            }
+        }
+        return root;
+    }
+}

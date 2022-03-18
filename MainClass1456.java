@@ -37,3 +37,40 @@ var maxVowels = function (s, k) {
 };
 
 */
+
+//kalipy一次过
+class Solution {
+    public int maxVowels(String s, int k) {
+        int l = 0;
+        int r = 0;
+        int n = s.length();
+        int ans = 0;
+        int cnt = 0;
+        for (int i = 0; i < k; i++) {
+            if (isCheck(s.charAt(i))) {
+                cnt++;
+            }
+            r++;
+        }
+        ans = cnt;
+
+        while (r < n) {
+            if (isCheck(s.charAt(l))) {
+                cnt--;
+            }
+            l++;
+            if (isCheck(s.charAt(r))) {
+                cnt++;
+            }
+            r++;
+
+            ans = Math.max(ans, cnt);
+        }
+
+        return ans;
+    }
+
+    private boolean isCheck(char c) {
+        return "aiueo".indexOf(c) >= 0;
+    }
+}

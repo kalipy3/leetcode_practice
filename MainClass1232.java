@@ -55,3 +55,45 @@ class Solution {
 };
 
 
+//kalipy一次过
+class Solution {
+    public boolean checkStraightLine(int[][] coordinates) {
+        int n = coordinates.length;
+
+        int x0 = coordinates[0][0];
+        int y0 = coordinates[0][1];
+
+        int a = coordinates[1][0] - x0;
+        int b = coordinates[1][1] - y0;
+
+        for (int i = 2; i < coordinates.length; i++) {
+            int c = coordinates[i][0] - x0;
+            int d = coordinates[i][1] - y0;
+
+            if (a*d != b*c) return false;
+        }
+
+        return true;
+    }
+}
+
+
+
+//kalipy一次过 推荐
+class Solution {
+    public boolean checkStraightLine(int[][] coordinates) {
+        //(y2-y1)/(x2-x1) = (y3-y1)/(x3-x1);//斜率相等即可
+        //(y2-y1)*(x3-x1) = (x2-x1)*(y3-y1);
+        //a*b = c*d;
+
+        int a = coordinates[1][1] - coordinates[0][1];
+        int c = coordinates[1][0] - coordinates[0][0];
+        for (int i = 2; i < coordinates.length; i++) {
+            int b = coordinates[i][0] - coordinates[0][0];
+            int d = coordinates[i][1] - coordinates[0][1];
+            if (a*b != c*d) return false;
+        }
+
+        return true;
+    }
+}

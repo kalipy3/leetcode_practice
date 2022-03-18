@@ -37,3 +37,38 @@ class Solution {
     }
 }
 
+//写法二 kalipy一次过 送分题
+class Solution {
+           String t = "aiueoAIUEO";
+    public String reverseVowels(String s) {
+ 
+        char[] str = s.toCharArray();
+
+        int l = 0;
+        int r = s.length() - 1;
+        while (l < r) {
+
+            while (l < r && !isCheck(s.charAt(l))) {
+                l++;
+            }
+            while (r > l && !isCheck(s.charAt(r))) {
+                r--;
+            }
+
+            if (l < r) {
+                char c = str[l];
+                str[l] = str[r];
+                str[r] = c;
+                l++;
+                r--;
+            }
+        }
+
+        return new String(str);
+    }
+
+    private boolean isCheck(char c) {
+        return t.indexOf(c) >= 0;
+    }
+}
+

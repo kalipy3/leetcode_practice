@@ -5,6 +5,8 @@
  * Distributed under terms of the MIT license.
  */
 
+//记住结论即可：求前缀
+
 /*
 【笔记】当一个数+1时，总会有这么一个规律“某一位后的数字，全部被置为相反数”。举个例子：
 
@@ -23,3 +25,30 @@ int rangeBitwiseAnd(int m, int n) {
     return n << offset;
 }
 
+
+//然后看 官方题解
+class Solution {
+    public int rangeBitwiseAnd(int m, int n) {
+        int shift = 0;
+        // 找到公共前缀
+        //while (m < n) {//也ok
+        while (m != n) {
+            m >>= 1;
+            n >>= 1;
+            ++shift;
+        }
+        return m << shift;
+    }
+}
+
+//官方题解 方法二 推荐
+class Solution {
+    public int rangeBitwiseAnd(int m, int n) {
+        //while (m != n) {//error 不ok
+        while (m < n) {
+            // 抹去最右边的 1
+            n = n & (n - 1);
+        }
+        return n;
+    }
+}

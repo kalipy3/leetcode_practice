@@ -6,7 +6,7 @@
  */
 //kalipy一次过 送分题
 
-//写法一
+//写法一 推荐
 class Solution {
     public int minFallingPathSum(int[][] arr) {
         int n = arr.length;
@@ -73,3 +73,30 @@ var minFallingPathSum = function (matrix) {
 };
 
 */
+
+//kalipy一次过 推荐
+class Solution {
+    public int minFallingPathSum(int[][] arr) {
+        int n = arr.length;
+        if (n == 1) return arr[0][0];
+        int[][] dp = new int[n+1][n+1];
+        //Arrays.fill(dp, Integer.MAX_VALUE / 2);
+        for(int i=1; i<n; i++) Arrays.fill(dp[i], Integer.MAX_VALUE);
+
+        int min = Integer.MAX_VALUE;
+        for (int i = 1;i<=n;i++) {
+            for (int j = 1;j <= n;j++) {
+                if (j == n) {
+                    dp[i][j] = arr[i-1][j-1] + Math.min(dp[i - 1][j],dp[i - 1][j - 1]);
+                } else {
+                    dp[i][j] = arr[i-1][j-1] + Math.min(dp[i - 1][j],Math.min(dp[i - 1][j - 1],dp[i - 1][j + 1]));
+                }
+
+                if (i == n) {
+                    min = Math.min(min,dp[i][j]);
+                }
+            }
+        }
+        return min;
+    }
+}

@@ -21,6 +21,30 @@ public boolean preOrder(TreeNode root,HashSet<Integer> hashset,int k){
     return preOrder(root.left,hashset,k) || preOrder(root.right,hashset,k);
 }
 
+//写法二 kalipy一次过
+class Solution {
+    boolean ans = false;
+    public boolean findTarget(TreeNode root, int k) {
+    HashSet<Integer> hashset = new HashSet<Integer>();
+    dfs(root,hashset,k); 
+
+    return ans;    
+}
+public void dfs(TreeNode root,HashSet<Integer> hashset,int k){
+    if(root == null)
+        return;
+
+    if(hashset.contains(root.val)){
+        ans = true;
+        return;
+    }
+    hashset.add(k - root.val);        
+    dfs(root.left,hashset,k);
+    dfs(root.right,hashset,k);
+}
+}
+
+
 //评论区
 //中序遍历数到数组里，在双指针找
 class Solution {

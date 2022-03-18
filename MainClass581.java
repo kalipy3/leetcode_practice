@@ -33,3 +33,23 @@ class Solution {
         return end-begin+1;
     }
 }
+
+//kalipy一次过 不推荐
+class Solution {
+    public int findUnsortedSubarray(int[] nums) {
+        //初始化
+        int len = nums.length;
+        
+        int[] b = new int[len];
+        System.arraycopy(nums, 0, b, 0, len);
+        Arrays.sort(b);
+
+        int l = 0;
+        int r = len - 1;
+        while (l <= r && nums[l] == b[l]) l++;
+        while (r >= l && nums[r] == b[r]) r--; 
+
+        return r - l + 1;
+
+    }
+}
