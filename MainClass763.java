@@ -19,3 +19,33 @@ class Solution {
     }
 }
 
+//kalipy一次过
+class Solution {
+    public List<Integer> partitionLabels(String s) {
+        List<Integer> ans = new LinkedList<>();
+
+        int[] map = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            map[c - 'a'] = i;
+        }
+
+        int l = 0;
+        int r = 0;
+        int maxLen = 0;
+        while (l <= r && r < s.length()) {
+            char c = s.charAt(r);
+            if (map[c - 'a'] > maxLen) {
+                maxLen = map[c - 'a'];
+            }
+            if (r == maxLen) {
+                ans.add(r - l + 1);
+                l = r + 1;
+            }
+
+            r++;
+        }
+
+        return ans;
+    }
+}

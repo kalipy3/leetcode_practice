@@ -7,15 +7,11 @@
 //方法一 kalipy一次过 位运算
 class Solution {
     public int missingNumber(int[] nums) {
-        int xor = 0;
         int n = nums.length;
-        for (int i = 0; i < n; i++) {
-            xor ^= nums[i];
-        }
-        for (int i = 0; i <= n; i++) {
-            xor ^= i;
-        }
-        return xor;
+        int ans = 0;
+        for (int i = 0; i <= n; i++) ans ^= i;
+        for (int i : nums) ans ^= i;
+        return ans;
     }
 }
 

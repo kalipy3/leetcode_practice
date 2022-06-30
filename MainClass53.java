@@ -31,7 +31,7 @@ public:
     }
 };
 
-//kalipy一次过 送分题
+//kalipy一次过 送分题 推荐
 class Solution {
     public int maxSubArray(int[] nums) {
         int dp[] = new int[nums.length];

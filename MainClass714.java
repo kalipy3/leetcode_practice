@@ -4,7 +4,12 @@
  *
  * Distributed under terms of the MIT license.
  */
+//和123题几乎一样
+
 //请直接看这个题解 通俗易懂 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/solution/jian-dan-dpmiao-dong-gu-piao-mai-mai-by-tejdo/
+
+//dp[i][0]表示第i天不持有可获得的最大利润
+//dp[i][1]表示第i天持有可获得的最大利润（注意是第i天持有，而不是第i天买入）
 class Solution {
     public int maxProfit(int[] prices, int fee) {
         int n = prices.length;

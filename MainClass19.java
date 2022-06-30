@@ -16,6 +16,7 @@ class Solution {
         }
 
         slow.next = slow.next.next;
+        //不要写成slow.next = fast;
 
         return dummy.next;
     }

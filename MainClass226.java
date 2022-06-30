@@ -40,20 +40,6 @@ class Solution {
 	}
 }
 
-//方法一的写法二
-class Solution {
-    public TreeNode invertTree(TreeNode root) {
-        if (root == null) {
-            return null;
-        }
-        TreeNode left = invertTree(root.left);
-        TreeNode right = invertTree(root.right);
-        root.left = right;
-        root.right = left;
-        return root;
-    }
-}
-
 
 //方法二
 class Solution {
@@ -97,3 +83,18 @@ class Solution {
         return root;
     }
 }
+
+//方法一的写法二 推荐
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        if (root == null) {
+            return null;
+        }
+        TreeNode left = invertTree(root.left);
+        TreeNode right = invertTree(root.right);
+        root.left = right;
+        root.right = left;
+        return root;
+    }
+}
+

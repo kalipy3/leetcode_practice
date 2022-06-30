@@ -1,6 +1,7 @@
 //请一定先看33题 官方题解
 //然后再看这个题解 https://leetcode-cn.com/problems/search-in-rotated-sorted-array-ii/solution/zai-javazhong-ji-bai-liao-100de-yong-hu-by-reedfan/
 //官方题解
+//直接用33题的提交也ok
 class Solution {
     public boolean search(int[] nums, int target) {
         int n = nums.length;

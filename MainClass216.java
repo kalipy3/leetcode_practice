@@ -39,4 +39,27 @@ class Solution {
 	}
 }
 
+//kalipy一次过 推荐 送分题
+class Solution {
+    List<List<Integer>> ans = new LinkedList<>();
 
+    public List<List<Integer>> combinationSum3(int k, int target) {
+        dfs(k, target, new LinkedList<>(), 1);
+
+        return ans;
+    }
+
+    private void dfs(int k, int target, List<Integer> list, int dept) {
+        if (target < 0) return;
+        if (target == 0 && list.size() == k) {
+            ans.add(new LinkedList<>(list));
+            return;
+        }
+
+        for (int i = dept; i <= 9; i++) {
+            list.add(i);
+            dfs(k, target - i, list, i + 1);
+            list.remove(list.size() - 1);
+        }
+    }
+}

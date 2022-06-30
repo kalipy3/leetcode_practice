@@ -103,3 +103,87 @@ class Solution {
         return true;
     }
 }
+
+
+//方法二
+List<String> res = new ArrayList<>();
+List<String> path = new ArrayList<>();
+
+public List<String> restoreIpAddresses(String s) {
+    backtracking(s,0,path);
+    return res;
+}
+
+private void backtracking(String s, int index, List<String> path) {
+    if (path.size() == 4 && index == s.length()){
+        // 收集
+        String ans = "";
+        for (String s1 : path) {
+            ans += s1;
+            ans += ".";
+        }
+        res.add(ans.substring(0,ans.length() - 1));
+    }
+    if (path.size() == 4 && index != s.length()) return;
+    for (int i = index; i < s.length() && i < index + 3; i++) {
+        if (isIp(s,index,i)){
+            path.add(s.substring(index,i + 1));
+            backtracking(s,i + 1,path);
+            path.remove(path.size() - 1);
+        }
+    }
+}
+
+private boolean isIp(String s, int index, int end) {
+    if (s.charAt(index) == '0' && end - index >= 1) return false;
+    int sum = 0;
+    for (int j = index; j <= end; j++) {
+        int tmp = s.charAt(j) - '0';
+        sum = sum*10 + tmp;
+    }
+    if (sum >= 0 && sum <= 255) return true;
+    return false;
+}
+
+
+//kalipy一次过 送分题
+class Solution {
+    List<String> ans = new LinkedList<>();
+    List<String> list = new LinkedList<>();
+    public List<String> restoreIpAddresses(String s) {
+        dfs(s, 0);
+
+        return ans;
+    }
+
+    private void dfs(String s, int idx) {
+        if (list.size() == 4 && idx == s.length()) {
+            ans.add(list.get(0) + "." + list.get(1) + "." + list.get(2) + "." + list.get(3));
+            return;
+        }
+
+        if (list.size() == 4 && idx != s.length()) return;//没有也ok
+
+        for (int i = idx; i < s.length(); i++) {
+            if (isIp(s, idx, i)) {
+                list.add(s.substring(idx, i + 1));
+                dfs(s, i + 1);
+                list.remove(list.size() - 1);
+            } else {
+                break;
+            }
+        }
+    }
+
+    private boolean isIp(String s, int start, int end) {
+        if (start > end) return false;
+        if (s.charAt(start) == '0' && end - start >= 1) return false;
+
+        int sum = 0;
+        for (int i = start; i <= end; i++) {
+            sum = sum * 10 + (s.charAt(i) - '0');
+        }
+
+        return sum <= 255;
+    }
+}

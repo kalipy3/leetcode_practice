@@ -77,3 +77,54 @@ class Solution {
 //链接：https://leetcode-cn.com/problems/palindrome-linked-list/solution/hui-wen-lian-biao-by-leetcode-solution/
 //来源：力扣（LeetCode）
 //著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+//
+
+
+//kalipy一次过 推荐
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        if (head == null) return true;
+
+        ListNode mid = findMid(head);
+        ListNode p2 = reverse(mid.next);
+        ListNode p2_t = p2;
+        ListNode p1 = head;
+        while (p2 != null) {
+            if (p1.val != p2.val) {
+                return false;
+            }
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+
+        ListNode p3 = reverse(p2_t);
+        mid.next = p3;
+
+        return true;
+    }
+
+    private ListNode findMid(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+
+    private ListNode reverse(ListNode head) {
+        if (head == null || head.next == null) return head;
+
+        ListNode pre = null;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+        }
+
+        return pre;
+    }
+}

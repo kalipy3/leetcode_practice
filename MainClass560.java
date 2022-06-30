@@ -48,6 +48,7 @@ public class Solution {
 }
 
 //kalipy一次过
+//curSum - preSum = k --> preSum = curSum - k 
 class Solution {
     public int subarraySum(int[] nums, int k) {
         int ans = 0;

@@ -6,6 +6,7 @@
  */
 //神仙题解 链接：https://leetcode-cn.com/problems/combinations/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-ma-/
 //方法一
+//送分题
 public class Solution {
 
     public List<List<Integer>> combine(int n, int k) {
@@ -39,5 +40,26 @@ public class Solution {
 }
 
 
-//方法二
+//kalipy一次过
+class Solution {
+    List<List<Integer>> ans = new LinkedList<>();
+    public List<List<Integer>> combine(int n, int k) {
 
+        dfs(n, k, new LinkedList<>(), 1);
+
+        return ans;
+    }
+
+    private void dfs(int n, int k, List<Integer> list, int dept) {
+        if (list.size() == k) {
+            ans.add(new LinkedList<>(list));
+            return;
+        }
+
+        for (int i = dept; i <= n; i++) {
+            list.add(i);
+            dfs(n, k, list, i + 1);
+            list.remove(list.size() - 1);
+        }
+    }
+}

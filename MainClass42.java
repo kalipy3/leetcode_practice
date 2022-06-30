@@ -92,6 +92,7 @@ class Solution {
         while (current < height.length) {
             //如果栈不空并且当前指向的高度大于栈顶高度就一直循环
             //java里Stack的peek方法是返回栈顶的元素但不移除它
+            //while (!stack.empty() && height[current] >= height[stack.peek()]) {//也ok
             while (!stack.empty() && height[current] > height[stack.peek()]) {
                 int h = height[stack.peek()]; //取出要出栈的元素
                 stack.pop(); //出栈

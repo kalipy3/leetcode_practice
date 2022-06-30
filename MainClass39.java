@@ -114,4 +114,27 @@ public class Solution {
     }
 }
 
+//kalipy一次过 送分题
+class Solution {
+    List<List<Integer>> ans = new LinkedList<>();
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        dfs(candidates, target, new LinkedList<>(), 0);
 
+        return ans;
+    }
+
+    private void dfs(int[] candidates, int target, List<Integer> list, int dept) {
+        if (target < 0) return;
+
+        if (target == 0) {
+            ans.add(new LinkedList<>(list));
+            return;
+        }
+
+        for (int i = dept; i < candidates.length; i++) {
+            list.add(candidates[i]);
+            dfs(candidates, target - candidates[i], list, i);
+            list.remove(list.size() - 1);
+        }
+    }
+}

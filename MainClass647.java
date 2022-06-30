@@ -1,6 +1,6 @@
 //推荐方法二 不易错
 
-//方法一 推荐写法二
+//方法一 推荐
 作者：carlsun-2
 链接：https://leetcode-cn.com/problems/palindromic-substrings/solution/dai-ma-sui-xiang-lu-dai-ni-xue-tou-dpzi-vidge/
 来源：力扣（LeetCode）
@@ -28,7 +28,7 @@ class Solution {
         }
 };
 
-//写法二
+//写法二 不推荐
 https://leetcode-cn.com/problems/palindromic-substrings/solution/shou-hua-tu-jie-dong-tai-gui-hua-si-lu-by-hyj8/
 class Solution {
     public int countSubstrings(String s) {
@@ -36,6 +36,7 @@ class Solution {
         boolean[][] dp = new boolean[s.length()][s.length()];
         int ans = 0;
 
+        //注意：j和i位置换了
         for (int j = 0; j < s.length(); j++) {
             for (int i = 0; i <= j; i++) {
                 //注意j - i < 2 一定要写在 dp[i + 1][j - 1]的前面，不然dp[i+1][j-1]越界异常
@@ -73,3 +74,25 @@ class Solution {
         }
     }
 }
+
+//kalipy一次过 直接把5题搬过来，几乎一样的代码
+class Solution {
+    public int countSubstrings(String s) {
+        // 动态规划法
+        boolean[][] dp = new boolean[s.length()][s.length()];
+        int ans = 0;
+
+        for (int i = s.length(); i >= 0; i--) {
+            for (int j = i; j < s.length(); j++) {
+                //注意j - i < 2 一定要写在 dp[i + 1][j - 1]的前面，不然dp[i+1][j-1]越界异常
+                if (s.charAt(i) == s.charAt(j) && (j - i <= 1 || dp[i + 1][j - 1])) {
+                    dp[i][j] = true;
+                    ans++;
+                }
+            }
+        }
+
+        return ans;
+    }
+}
+

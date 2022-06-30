@@ -42,3 +42,24 @@ class Solution {
     }
 }
 
+//kalipy一次过 推荐
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        ListNode dummy = new ListNode(-1);
+        dummy.next = head;
+
+        ListNode cur = head;
+        ListNode pre = dummy;
+        while (cur != null && cur.next != null) {
+            ListNode next = cur.next;
+            cur.next = cur.next.next;
+            next.next = cur;
+            pre.next = next;
+
+            pre = cur;
+            cur = cur.next;
+        }
+
+        return dummy.next;
+    }
+}

@@ -101,6 +101,7 @@ private void swap(char[] chars, int lo, int hi) {
 //什么叫尽可能？就是在限制条件下求极致，那限制条件是什么呢？
 //
 //尽可能的后是我们要追求的，但我们不能忘记初心：最大值！！！小数后面的最大值，无论你多靠后，只要你不是最大值，不好意思，pass
+//推荐
 public class Solution {
 
     public int maximumSwap(int num) {

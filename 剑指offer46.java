@@ -45,7 +45,7 @@ class Solution {
     }
 }
 
-//kalipy 仿91题的 写法 也ok
+//kalipy 仿91题的 写法 也ok 推荐
 class Solution {
     public int translateNum(int num) {
         char[] cs = (num + "").toCharArray();

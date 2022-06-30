@@ -43,3 +43,22 @@ public boolean dfs(TreeNode A, TreeNode B){
     if(A == null) return false;
     return A.val == B.val && dfs(A.left, B.left) && dfs(A.right, B.right);
 }
+
+
+//kalipy一次过
+class Solution {
+    public boolean isSubStructure(TreeNode A, TreeNode B) {
+        if (A == null && B == null) return true;
+        if (A == null || B == null) return false;
+
+        return dfs(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B);
+    }
+
+    private boolean dfs(TreeNode A, TreeNode B) {
+        if (B == null) return true;
+        if (A == null || B == null) return false;
+        if (A.val != B.val) return false;
+
+        return dfs(A.left, B.left) && dfs(A.right, B.right);
+    }
+}

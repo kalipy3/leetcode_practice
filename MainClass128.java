@@ -58,3 +58,27 @@ var longestConsecutive = function (nums) {
 };
 */
 
+//kalipy一次过
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        HashSet<Integer> set=new HashSet<>();
+        for(int i=0;i<nums.length;i++){
+            if(!set.contains(nums[i])){
+                set.add(nums[i]);
+            }
+        }
+        int maxLen=0;
+        for(Integer num:set){
+            if(!set.contains(num-1)){
+                int cur=num;
+                int curLen=1;
+                while(set.contains(cur+1)){
+                    cur++;
+                    curLen++;
+                }
+                maxLen=Math.max(maxLen,curLen);
+            }
+        }
+    return maxLen;
+    }
+}

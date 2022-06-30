@@ -1,31 +1,31 @@
 //推荐
+//官方题解 头插法
 class Solution {
-    public ListNode reverseBetween(ListNode head, int m, int n) {
-        // 定义一个dummyHead, 方便处理
-        ListNode dummyHead = new ListNode(0);
-        dummyHead.next = head;
-
-        // 初始化指针
-        ListNode g = dummyHead;
-        ListNode p = dummyHead.next;
-
-        // 将指针移到相应的位置
-        for(int step = 0; step < m - 1; step++) {
-            g = g.next; p = p.next;
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        // 设置 dummyNode 是这一类问题的一般做法
+        ListNode dummyNode = new ListNode(-1);
+        dummyNode.next = head;
+        ListNode pre = dummyNode;
+        for (int i = 0; i < left - 1; i++) {
+            pre = pre.next;
         }
-
-        // 头插法插入节点
-        for (int i = 0; i < n - m; i++) {
-            ListNode removed = p.next;
-            p.next = p.next.next;
-
-            removed.next = g.next;
-            g.next = removed;
+        ListNode cur = pre.next;
+        ListNode next;
+        for (int i = 0; i < right - left; i++) {
+            next = cur.next;
+            cur.next = next.next;
+            next.next = pre.next;
+            pre.next = next;
         }
-
-        return dummyHead.next;
+        return dummyNode.next;
     }
 }
+
+
+作者：LeetCode-Solution
+链接：https://leetcode.cn/problems/reverse-linked-list-ii/solution/fan-zhuan-lian-biao-ii-by-leetcode-solut-teyq/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 
 作者：mu-yi-cheng-zhou-2
 链接：https://leetcode-cn.com/problems/reverse-linked-list-ii/solution/java-shuang-zhi-zhen-tou-cha-fa-by-mu-yi-cheng-zho/

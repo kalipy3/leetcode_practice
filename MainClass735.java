@@ -43,7 +43,7 @@ class Solution {
         Stack<Integer> s = new Stack<>();
 
         for (int i = 0; i < asteroids.length; i++) {
-                        while (!s.isEmpty() && s.peek()>0 && asteroids[i]<0 && s.peek()<-asteroids[i]) {
+            while (!s.isEmpty() && s.peek()>0 && asteroids[i]<0 && s.peek()<-asteroids[i]) {
                 s.pop();
             }
 

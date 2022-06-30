@@ -1,4 +1,4 @@
-//请看官方题解的文字部分 然后直接看代码
+//请看官方题解的文字部分 然后直接看kalipy的代码
 class Solution {
     public void nextPermutation(int[] nums) {
         int i = nums.length - 2;

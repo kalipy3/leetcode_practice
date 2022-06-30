@@ -48,7 +48,7 @@ class Solution {
     }
 }
 
-//kalipy一次过
+//kalipy一次过 推荐
 class Solution {
     TreeNode pre = null;
     boolean ans = true;

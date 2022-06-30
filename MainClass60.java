@@ -79,4 +79,41 @@ public class Solution {
     }
 }
 
+//kalipy一次过
+class Solution {
+    //List<String> list = new LinkedList<>();
+    boolean[] visited = new boolean[1000000];
+    int n;
+    int k;
+    String ans = "";
+    public String getPermutation(int n, int k) {
+        this.n = n;
+        this.k = k;
+        dfs(0, new StringBuilder());
+        //for (String str : list) {
+        //    System.out.println(str);
+        //}
+        return ans;
+    }
 
+    private void dfs(int dept, StringBuilder sb) {
+        if (dept == n) {
+            //list.add(sb.toString());
+            k--;
+            if (k == 0) {
+                ans = sb.toString();
+            }
+            return;
+        }
+
+        for (int i = 1; i <= n; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                sb.append(i + "");
+                dfs(dept + 1, sb);
+                visited[i] = false;
+                sb.deleteCharAt(sb.length() - 1);
+            }
+        }
+    }
+}

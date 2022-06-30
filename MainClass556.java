@@ -1,9 +1,5 @@
-/*
- * MainClass556.java
- * Copyright (C) 2022 2022-02-26 21:13 kalipy <kalipy@debian> 3069087972@qq.com
- *
- * Distributed under terms of the MIT license.
- */
+//本题和31题一样
+
 //官方题解 请看官方题解的图解 很好懂
 public class Solution {
     public int nextGreaterElement(int n) {
@@ -85,4 +81,60 @@ public class Solution {
         a[j] = temp;
     }
 }
+
+//写法三
+//下一个更大元素III ×
+//下一个排列 √ 对应31题
+class Solution {
+    public int nextGreaterElement(int n) {
+        char[] cs = (n + "").toCharArray();
+        int[] nums = new int[cs.length];
+        for (int i = 0; i < nums.length; i++) {
+            nums[i] = cs[i] - '0';
+        }
+
+        //直接调用31题的答案
+        nextPermutation(nums);
+        
+        int digit = 0;
+        for (int i = 0; i < nums.length; i++) {
+            digit = 10 * digit + nums[i];
+        }
+
+        return digit > n ? digit : -1;
+        
+    }
+
+    public void nextPermutation(int[] nums) {
+        int i = 0;
+        for (i = nums.length - 2; i >= 0; i--) {
+            if (nums[i] < nums[i+1]) {
+                break;
+            }
+        }
+        if (i >= 0) {
+            for (int j = nums.length - 1; j > i; j--) {
+                if (nums[i] < nums[j]) {
+                    int t = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = t;
+                    break;
+                }
+            }
+        }
+        revesere(nums, i + 1, nums.length - 1);
+
+    }
+
+    private void revesere(int[] nums, int l, int r) {
+        while (l < r) {
+            int t = nums[l];
+            nums[l] = nums[r];
+            nums[r] = t;
+            l++;
+            r--;
+        }
+    }
+}
+
 

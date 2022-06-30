@@ -7,6 +7,8 @@
 
 
 //链接：https://leetcode-cn.com/problems/longest-palindromic-subsequence/solution/dong-tai-gui-hua-si-yao-su-by-a380922457-3/
+//f[i][j] 表示 s 的第 i 个字符到第 j 个字符组成的子串中，最长的回文序列长度是多少。
+//下标从0开始
 class Solution {
     public int longestPalindromeSubseq(String s) {
         int n = s.length();

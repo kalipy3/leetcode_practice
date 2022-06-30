@@ -23,3 +23,14 @@ int numSubarrayProductLessThanK(int* nums, int numsSize, int k){
     return cnt;
 }
 
+
+//ans += r - l + 1的解释
+//
+//举例加深理解，还是例题这个例子： nums = [10,5,2,6], k = 100 每一轮都是right右移一个单位
+//
+//    第一轮：left=0 right=0 此时[10]满足
+//    第二轮：left=0 right=1 此时新增[5] [10,5]
+//    第三轮：left=0 right=2 此时不满足<k 因此left向左移动1个单位 left=1 right=2 此时新增[2] [5,2] 相当于由于left左移 使得排除了[10,2,5]这种情况
+//    第四轮：left=1 right=3 此时新增[6] [2,6] [5,2,6]
+//
+//right=len-1 结束循环。 ans=1+2+2+3=8 每一轮新增的量=right-left+1

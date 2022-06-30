@@ -39,3 +39,29 @@ class Solution {
         return sb.toString();
     }
 }
+
+//写法三 kalipy一次过 送分题
+class Solution {
+    public String removeDuplicates(String s) {
+        Deque<String> st = new LinkedList<>();
+        int i = 0;
+        while (i < s.length()) {
+            char c = s.charAt(i);
+            if (!st.isEmpty() && st.peek().equals(c + "")) {
+                st.pop();
+                i++;
+            } else {
+                st.push(c + "");
+                i++;
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        while (!st.isEmpty()) {
+            sb.append(st.pop());
+        }
+
+        return sb.reverse().toString();
+    }
+}
+
