@@ -8,7 +8,9 @@
 public class 快速排序
 {
     public static void main(String args[]) {
-        int arr[] = {5, -1, 4, 2, 1};
+        //int arr[] = {5, -1, 4, 2, 1};
+
+        int[] arr = new int[] {1, -9, 3, 7, 6};
         
         quickSort(arr, 0, arr.length-1);
         for (int i = 0; i < arr.length; i++) {
@@ -30,6 +32,7 @@ public class 快速排序
         int val = arr[low];
 
         while (low < high) {
+            //这里两个while循环位置不能换
             while (low < high && arr[high] >= val)//所有小于val的被交换到左边
                 high--;
             arr[low] = arr[high];
